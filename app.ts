@@ -8,7 +8,7 @@ const noteLengths = getNoteLengths({ bpm: 137 });
 
 const tr8 = new Tr8({
   port: 'MX-1 USB1',
-  channel: 10,
+  channel: 9,
   configuration: {
     drumSet: 'tr909',
     snareDrum: {
@@ -19,7 +19,7 @@ const tr8 = new Tr8({
 
 const tb3 = new Tb3({
   port: 'MX-1 USB2',
-  channel: 2,
+  channel: 1,
   configuration: {
     sound: 1,
     cutoff: 64,
@@ -29,7 +29,7 @@ const tb3 = new Tb3({
 
 const system8 = new System8({
   port: 'MX-1 USB4',
-  channel: 1,
+  channel: 0,
   configuration: {
     sound: 4
   }
