@@ -1,5 +1,4 @@
 import { Configuration } from './Configuration';
-import { Channel } from 'easymidi';
 import { Instrument } from '../Instrument';
 import { MidiChannel } from '../../types/MidiChannel';
 import { Note } from '../../types/Note';
@@ -8,7 +7,7 @@ import { Octave } from '../../types/Octave';
 class Tb3 extends Instrument {
   public constructor ({ port, channel, configuration }: {
     port: string;
-    channel: Channel;
+    channel: MidiChannel;
     configuration?: Configuration;
   }) {
     super({ port, channel });
