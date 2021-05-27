@@ -1,9 +1,9 @@
 import { Configuration } from './Configuration';
 import { flaschenpost } from 'flaschenpost';
 import { Instrument } from '../Instrument';
-import { MidiChannel } from '../types/MidiChannel';
-import { Note } from '../types/Note';
-import * as errors from '../errors';
+import { MidiChannel } from '../../types/MidiChannel';
+import { Note } from '../../types/Note';
+import * as errors from '../../errors';
 
 const logger = flaschenpost.getLogger();
 

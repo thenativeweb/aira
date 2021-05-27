@@ -1,8 +1,4 @@
-import { getNoteLengths } from './lib/utils/getNoteLengths';
-import { Note } from './lib/types/Note';
-import { System8 } from './lib/System8';
-import { Tb3 } from './lib/Tb3';
-import { Tr8 } from './lib/Tr8';
+import { getNoteLengths, Note, System8, Tb3, Tr8 } from '../aira';
 
 const noteLengths = getNoteLengths({ bpm: 137 });
 

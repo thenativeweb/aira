@@ -1,6 +1,6 @@
 import { assert } from 'assertthat';
-import { getNoteValue } from '../../lib/util/getNoteValue';
-import { Note } from '../../lib/types/Note';
+import { getNoteValue } from '../../../lib/utils/getNoteValue';
+import { Note } from '../../../lib/types/Note';
 
 suite('getNoteValue', (): void => {
   test('returns 0 for C-1.', async (): Promise<void> => {

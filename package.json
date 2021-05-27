@@ -1,6 +1,15 @@
 {
   "name": "aira",
   "version": "0.1.0",
+  "description": "aira runs loops on Roland AIRA series synthesizers.",
+  "contributors": [
+    {
+      "name": "Golo Roden",
+      "email": "golo.roden@thenativeweb.io"
+    }
+  ],
+  "main": "build/lib/aira.js",
+  "types": "build/lib/aira.d.ts",
   "dependencies": {
     "defekt": "7.2.0",
     "easymidi": "2.0.4",
@@ -9,14 +18,18 @@
   "devDependencies": {
     "@types/mocha": "8.2.2",
     "assertthat": "6.3.0",
-    "eslint": "7.27.0",
-    "eslint-config-es": "3.29.2",
-    "mocha": "8.4.0",
-    "ts-node": "10.0.0",
-    "typescript": "4.3.2"
+    "roboter": "11.7.1",
+    "semantic-release-configuration": "2.0.1"
   },
-  "scripts": {
-    "start": "npx ts-node app.ts",
-    "test": "npx mocha --async-only --bail --require ts-node/register --ui tdd 'test/**/*Tests.ts'"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/thenativeweb/aira.git"
+  },
+  "keywords": [
+    "aira",
+    "midi",
+    "music",
+    "roland"
+  ],
+  "license": "MIT"
 }

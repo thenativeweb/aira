@@ -1,30 +1,28 @@
-import { getNoteValue } from './utils/getNoteValue';
-import { MidiChannel } from './types/MidiChannel';
-import { Note } from './types/Note';
-import { Octave } from './types/Octave';
-import { Output } from 'easymidi';
+import { getNoteValue } from '../utils/getNoteValue';
+import { MidiChannel } from '../types/MidiChannel';
+import { Note } from '../types/Note';
+import { Octave } from '../types/Octave';
+import { Channel, Output } from 'easymidi';
 
 abstract class Instrument {
   protected readonly port: Output;
 
-  protected readonly channel: number;
+  protected readonly channel: Channel;
 
   public constructor ({ port, channel }: {
     port: string;
     channel: MidiChannel;
   }) {
     this.port = new Output(port, false);
-    this.channel = channel - 1;
+    this.channel = channel - 1 as Channel;
   }
 
   protected setContinuousController ({ controller, value }: {
     controller: number;
     value: number;
   }): void {
-    // TODO: Figure out why the following line does not work without the cast
-    //       to any, and fix it.
     this.port.send('cc', {
-      channel: this.channel as any,
+      channel: this.channel,
       controller,
       value
     });
@@ -34,9 +32,7 @@ abstract class Instrument {
     value: number;
   }): void {
     this.port.send('program', {
-      // TODO: Figure out why the following line does not work without the cast
-      //       to any, and fix it.
-      channel: this.channel as any,
+      channel: this.channel,
       number: value
     });
   }
@@ -48,18 +44,14 @@ abstract class Instrument {
     length: number;
   }): void {
     this.port.send('noteon', {
-      // TODO: Figure out why the following line does not work without the cast
-      //       to any, and fix it.
-      channel: this.channel as any,
+      channel: this.channel,
       note: getNoteValue({ name, octave }),
       velocity
     });
 
     setTimeout((): void => {
       this.port.send('noteoff', {
-        // TODO: Figure out why the following line does not work without the cast
-        //       to any, and fix it.
-        channel: this.channel as any,
+        channel: this.channel,
         note: getNoteValue({ name, octave }),
         velocity
       });
@@ -69,9 +61,7 @@ abstract class Instrument {
   public stop (): void {
     for (let noteValue = 0; noteValue <= 127; noteValue++) {
       this.port.send('noteoff', {
-        // TODO: Figure out why the following line does not work without the cast
-        //       to any, and fix it.
-        channel: this.channel as any,
+        channel: this.channel,
         note: noteValue,
         velocity: 127
       });
