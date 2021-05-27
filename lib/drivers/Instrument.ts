@@ -11,7 +11,7 @@ abstract class Instrument {
 
   public constructor ({ port, channel }: {
     port: string;
-    channel: MidiChannel;
+    channel: Channel;
   }) {
     this.port = new Output(port, false);
     this.channel = channel - 1 as Channel;

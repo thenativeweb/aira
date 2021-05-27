@@ -1,4 +1,5 @@
 import { Configuration } from './Configuration';
+import { Channel } from 'easymidi';
 import { flaschenpost } from 'flaschenpost';
 import { Instrument } from '../Instrument';
 import { MidiChannel } from '../../types/MidiChannel';
@@ -15,7 +16,7 @@ const drumSets = {
 class Tr8 extends Instrument {
   public constructor ({ port, channel, configuration }: {
     port: string;
-    channel: MidiChannel;
+    channel: Channel;
     configuration?: Configuration;
   }) {
     super({ port, channel });
