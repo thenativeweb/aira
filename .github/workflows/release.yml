@@ -8,7 +8,9 @@ on:
 jobs:
   release:
     name: Release
-    runs-on: ubuntu-latest
+    # Unlike usual, don't run this on Ubuntu, as ALSA is not installed by
+    # default.
+    runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v1
