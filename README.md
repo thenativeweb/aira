@@ -23,13 +23,13 @@ $ npm install aira
 First you need to add a reference to `aira` to your application:
 
 ```javascript
-const { getNoteLengths, Note, Tb3, Tr8, System8 } = require('aira');
+const { getNoteLengths, Tb3, Tr8, System8 } = require('aira');
 ```
 
 If you use TypeScript, use the following code instead:
 
 ```typescript
-import { getNoteLengths, Note, Tb3, Tr8, System8 } from 'aira';
+import { getNoteLengths, Tb3, Tr8, System8 } from 'aira';
 ```
 
 For information on how to use these types, please refer to the demo mentioned below. Detailed documentation will be added once the API is a little bit more stable.
@@ -47,6 +47,7 @@ Please note that the demo expects the following set up:
 - Roland MX-1 as MIDI interface
 - Roland TR-8 connected to USB 1, using channel 10
 - Roland TB-3 connected to USB 2, using channel 2
+- Roland TB-3 connected to USB 3, using channel 2
 - Roland System 8 connected to USB 4, using channel 1
 
 ## Running quality assurance
