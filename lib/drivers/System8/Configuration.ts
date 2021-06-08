@@ -1,5 +1,7 @@
+import { MidiValue } from '../../types/MidiValue';
+
 interface Configuration {
-  sound: number;
+  sound?: MidiValue;
 }
 
 export { Configuration };

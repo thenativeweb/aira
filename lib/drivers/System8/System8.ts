@@ -1,6 +1,7 @@
 import { Configuration } from './Configuration';
 import { Instrument } from '../Instrument';
 import { MidiChannel } from '../../types/MidiChannel';
+import { MidiValue } from '../../types/MidiValue';
 import { Note } from '../../types/Note';
 import { Octave } from '../../types/Octave';
 
@@ -12,18 +13,18 @@ class System8 extends Instrument {
   }) {
     super({ port, channel });
 
-    if (configuration) {
+    if (configuration?.sound) {
       this.selectSound({ value: configuration.sound });
     }
   }
 
-  public playNote ({ name, octave, velocity, length }: {
-    name: Note;
+  public playNote ({ note, octave, velocity, length }: {
+    note: Note;
     octave: Octave;
-    velocity?: number;
+    velocity?: MidiValue;
     length: number;
   }): void {
-    super.playNote({ name, octave, length, velocity });
+    super.playNote({ note, octave, length, velocity });
   }
 }
 

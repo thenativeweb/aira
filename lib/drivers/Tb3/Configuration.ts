@@ -1,7 +1,9 @@
+import { MidiValue } from '../../types/MidiValue';
+
 interface Configuration {
-  sound: number;
-  cutoff: number;
-  resonance: number;
+  sound?: MidiValue;
+  cutoff?: MidiValue;
+  resonance?: MidiValue;
 }
 
 export { Configuration };

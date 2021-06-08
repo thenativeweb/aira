@@ -1,11 +1,10 @@
-enum Note {
-  c, cs,
-  d, ds,
-  e,
-  f, fs,
-  g, gs,
-  a, as,
-  b
-}
+type Note =
+  'c' | 'c#' |
+  'd' | 'd#' |
+  'e' |
+  'f' | 'f#' |
+  'g' | 'g#' |
+  'a' | 'a#' |
+  'b';
 
 export { Note };

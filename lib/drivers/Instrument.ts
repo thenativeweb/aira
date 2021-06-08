@@ -1,5 +1,6 @@
 import { getNoteValue } from '../utils/getNoteValue';
 import { MidiChannel } from '../types/MidiChannel';
+import { MidiValue } from '../types/MidiValue';
 import { Note } from '../types/Note';
 import { Octave } from '../types/Octave';
 import { Channel, Output } from 'easymidi';
@@ -19,7 +20,7 @@ abstract class Instrument {
 
   protected setContinuousController ({ controller, value }: {
     controller: number;
-    value: number;
+    value: MidiValue;
   }): void {
     this.port.send('cc', {
       channel: this.channel,
@@ -29,7 +30,7 @@ abstract class Instrument {
   }
 
   protected selectSound ({ value }: {
-    value: number;
+    value: MidiValue;
   }): void {
     this.port.send('program', {
       channel: this.channel,
@@ -37,22 +38,22 @@ abstract class Instrument {
     });
   }
 
-  protected playNote ({ name, octave, velocity = 127, length }: {
-    name: Note;
+  protected playNote ({ note, octave, velocity = 127, length }: {
+    note: Note;
     octave: Octave;
-    velocity?: number;
+    velocity?: MidiValue;
     length: number;
   }): void {
     this.port.send('noteon', {
       channel: this.channel,
-      note: getNoteValue({ name, octave }),
+      note: getNoteValue({ note, octave }),
       velocity
     });
 
     setTimeout((): void => {
       this.port.send('noteoff', {
         channel: this.channel,
-        note: getNoteValue({ name, octave }),
+        note: getNoteValue({ note, octave }),
         velocity
       });
     }, length);

@@ -1,5 +1,7 @@
 import { defekt } from 'defekt';
 
-class DrumsetUnknown extends defekt({ code: 'DrumsetUnknown' }) {}
+class OperationInvalid extends defekt({ code: 'OperationInvalid' }) {}
 
-export { DrumsetUnknown };
+export {
+  OperationInvalid
+};
