@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/thenativeweb/aira/compare/1.0.1...1.1.0) (2021-06-08)
+
+
+### Bug Fixes
+
+* Fix tests and update documentation. ([3118b71](https://github.com/thenativeweb/aira/commit/3118b713550b42bd9ebdd21295bede840860d65b))
+
+
+### Features
+
+* Add support to configure TR-8 and TB-3 reasonably. ([de00424](https://github.com/thenativeweb/aira/commit/de004240f1d7aab4914844c0993a45cbdce510d4))
+
 ## [1.0.1](https://github.com/thenativeweb/aira/compare/1.0.0...1.0.1) (2021-06-07)
 
 
