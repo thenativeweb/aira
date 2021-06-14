@@ -1,3 +1,11 @@
+## [1.1.1](https://github.com/thenativeweb/aira/compare/1.1.0...1.1.1) (2021-06-14)
+
+
+### Bug Fixes
+
+* bump defekt from 7.2.0 to 7.2.3 ([#10](https://github.com/thenativeweb/aira/issues/10)) ([79217e2](https://github.com/thenativeweb/aira/commit/79217e2542adbf2acff3fdf711f3a2295cafd42b))
+* bump flaschenpost from 5.0.36 to 5.0.37 ([#9](https://github.com/thenativeweb/aira/issues/9)) ([9e4893c](https://github.com/thenativeweb/aira/commit/9e4893ca1b5a6171191777c0db8e9f9382ae7ef3))
+
 # [1.1.0](https://github.com/thenativeweb/aira/compare/1.0.1...1.1.0) (2021-06-08)
 
 
