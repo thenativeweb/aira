@@ -1,4 +1,4 @@
-import { getNoteLengths, System8, Tb3, Tr8 } from '../aira';
+import { getNoteLengths, MidiValue, System8, Tb3, Tr8 } from '../aira';
 
 const noteLengths = getNoteLengths({ bpm: 137 });
 
@@ -39,7 +39,7 @@ process.on('SIGINT', (): void => {
   process.exit();
 });
 
-let cutoffAndResonance = 0;
+let cutoffAndResonance: MidiValue = 0;
 
 setInterval((): void => {
   tr8.bassDrum({ length: noteLengths.sixteenth });
@@ -59,21 +59,21 @@ setInterval((): void => {
   setTimeout((): void => {
     tb3.playNote({ note: 'a', octave: 1, length: noteLengths.sixteenth, velocity: 127 });
 
-    cutoffAndResonance = (cutoffAndResonance + 1) % 128;
+    cutoffAndResonance = (cutoffAndResonance + 1) % 128 as MidiValue;
     tb3.setCutoff({ value: cutoffAndResonance });
     tb3.setResonance({ value: cutoffAndResonance });
 
     setTimeout((): void => {
       tb3.playNote({ note: 'a', octave: 2, length: noteLengths.sixteenth, velocity: 127 });
 
-      cutoffAndResonance = (cutoffAndResonance + 1) % 128;
+      cutoffAndResonance = (cutoffAndResonance + 1) % 128 as MidiValue;
       tb3.setCutoff({ value: cutoffAndResonance });
       tb3.setResonance({ value: cutoffAndResonance });
 
       setTimeout((): void => {
         tb3.playNote({ note: 'a', octave: 1, length: noteLengths.sixteenth, velocity: 127 });
 
-        cutoffAndResonance = (cutoffAndResonance + 1) % 128;
+        cutoffAndResonance = (cutoffAndResonance + 1) % 128 as MidiValue;
         tb3.setCutoff({ value: cutoffAndResonance });
         tb3.setResonance({ value: cutoffAndResonance });
       }, noteLengths.sixteenth);
