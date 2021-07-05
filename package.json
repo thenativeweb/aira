@@ -11,7 +11,7 @@
   "main": "build/lib/aira.js",
   "types": "build/lib/aira.d.ts",
   "dependencies": {
-    "defekt": "7.2.3",
+    "defekt": "7.3.0",
     "easymidi": "2.0.5",
     "flaschenpost": "5.0.37"
   },
