@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/thenativeweb/aira/compare/1.1.1...1.1.2) (2021-07-06)
+
+
+### Bug Fixes
+
+* bump defekt from 7.2.3 to 7.3.0 ([#17](https://github.com/thenativeweb/aira/issues/17)) ([ea0d849](https://github.com/thenativeweb/aira/commit/ea0d849180272ecb654dc950ae9aed3b1dfb4e12))
+
 ## [1.1.1](https://github.com/thenativeweb/aira/compare/1.1.0...1.1.1) (2021-06-14)
 
 
