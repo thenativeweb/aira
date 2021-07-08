@@ -38,7 +38,7 @@ abstract class Instrument {
     });
   }
 
-  protected playNote ({ note, octave, velocity = 127, length }: {
+  public playNote ({ note, octave, velocity = 127, length }: {
     note: Note;
     octave: Octave;
     velocity?: MidiValue;

@@ -22,7 +22,9 @@ interface NoteValue {
 }
 
 type OnBar = () => void;
-type OnCount = ({ noteValue }: {
+type OnCount = ({ beatCounter, pulseCounter, noteValue }: {
+  beatCounter: number;
+  pulseCounter: PulseCounter;
   noteValue: NoteValue;
 }) => void;
 
@@ -49,7 +51,7 @@ class Signature {
 
         const noteValue = this.getNoteValue({ pulseCounter });
 
-        onCount({ noteValue });
+        onCount({ beatCounter: this.beatCounter, pulseCounter, noteValue });
 
         if (pulseCounter === this.metronome.pulsesPerBeat) {
           this.beatCounter += 1;
