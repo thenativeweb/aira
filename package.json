@@ -16,7 +16,7 @@
     "flaschenpost": "5.0.38"
   },
   "devDependencies": {
-    "@types/mocha": "8.2.2",
+    "@types/mocha": "8.2.3",
     "assertthat": "6.3.7",
     "roboter": "11.7.7",
     "semantic-release-configuration": "2.0.5"
