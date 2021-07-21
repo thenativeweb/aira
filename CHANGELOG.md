@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/thenativeweb/aira/compare/1.1.4...1.1.5) (2021-07-21)
+
+
+### Bug Fixes
+
+* bump flaschenpost from 5.0.38 to 5.0.41 ([#22](https://github.com/thenativeweb/aira/issues/22)) ([8beb2bb](https://github.com/thenativeweb/aira/commit/8beb2bbe2312f49edeed138b9a34ff3e2c63c293))
+
 ## [1.1.4](https://github.com/thenativeweb/aira/compare/1.1.3...1.1.4) (2021-07-13)
 
 
