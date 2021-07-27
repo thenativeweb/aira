@@ -13,7 +13,7 @@
   "dependencies": {
     "defekt": "7.3.1",
     "easymidi": "2.0.5",
-    "flaschenpost": "5.0.41"
+    "flaschenpost": "5.0.43"
   },
   "devDependencies": {
     "@types/mocha": "9.0.0",
