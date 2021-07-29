@@ -1,6 +1,6 @@
 {
   "name": "aira",
-  "version": "1.1.1",
+  "version": "1.1.7",
   "description": "aira runs loops on Roland AIRA series synthesizers.",
   "contributors": [
     {
@@ -11,15 +11,15 @@
   "main": "build/lib/aira.js",
   "types": "build/lib/aira.d.ts",
   "dependencies": {
-    "defekt": "7.2.3",
+    "defekt": "7.3.2",
     "easymidi": "2.0.5",
-    "flaschenpost": "5.0.37"
+    "flaschenpost": "5.0.43"
   },
   "devDependencies": {
-    "@types/mocha": "8.2.2",
-    "assertthat": "6.3.3",
-    "roboter": "11.7.7",
-    "semantic-release-configuration": "2.0.4"
+    "@types/mocha": "9.0.0",
+    "assertthat": "6.3.9",
+    "roboter": "11.7.8",
+    "semantic-release-configuration": "2.0.5"
   },
   "repository": {
     "type": "git",
