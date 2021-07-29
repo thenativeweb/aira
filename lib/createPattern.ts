@@ -1,9 +1,10 @@
+import { Pattern } from './types/Pattern';
 import { Step } from './Step';
 import * as errors from './errors';
 
 const maxStepsPerBar = 96;
 
-const createPattern = function (steps: Step[]): Step[] {
+const createPattern = function (steps: Step[]): Pattern {
   if (steps.length === 0) {
     throw new errors.PatternLengthInvalid();
   }
