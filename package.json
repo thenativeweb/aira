@@ -8,8 +8,12 @@
       "email": "golo.roden@thenativeweb.io"
     }
   ],
+  "private": false,
   "main": "build/lib/aira.js",
   "types": "build/lib/aira.d.ts",
+  "engines": {
+    "node": ">= 16.7.0"
+  },
   "dependencies": {
     "defekt": "7.3.2",
     "easymidi": "2.0.5",
@@ -21,6 +25,7 @@
     "roboter": "12.1.1",
     "semantic-release-configuration": "2.0.5"
   },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git://github.com/thenativeweb/aira.git"
