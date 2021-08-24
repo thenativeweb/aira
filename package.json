@@ -12,9 +12,9 @@
   "main": "build/lib/aira.js",
   "types": "build/lib/aira.d.ts",
   "dependencies": {
-    "defekt": "7.3.2",
+    "defekt": "7.3.3",
     "easymidi": "2.0.5",
-    "flaschenpost": "5.0.47"
+    "flaschenpost": "5.0.49"
   },
   "devDependencies": {
     "@types/mocha": "9.0.0",
