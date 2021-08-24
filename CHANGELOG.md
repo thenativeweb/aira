@@ -1,3 +1,10 @@
+## [1.1.10](https://github.com/thenativeweb/aira/compare/1.1.9...1.1.10) (2021-08-24)
+
+
+### Bug Fixes
+
+* remove engine constraint ([#34](https://github.com/thenativeweb/aira/issues/34)) ([d714ce6](https://github.com/thenativeweb/aira/commit/d714ce61b00ca7d446a238ac4f916df644d9e1ab))
+
 ## [1.1.9](https://github.com/thenativeweb/aira/compare/1.1.8...1.1.9) (2021-08-10)
 
 
