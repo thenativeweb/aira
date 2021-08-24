@@ -11,9 +11,6 @@
   "private": false,
   "main": "build/lib/aira.js",
   "types": "build/lib/aira.d.ts",
-  "engines": {
-    "node": ">= 16.7.0"
-  },
   "dependencies": {
     "defekt": "7.3.3",
     "easymidi": "2.0.5",
