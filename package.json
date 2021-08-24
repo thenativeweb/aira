@@ -15,7 +15,7 @@
     "node": ">= 16.7.0"
   },
   "dependencies": {
-    "defekt": "7.3.2",
+    "defekt": "7.3.3",
     "easymidi": "2.0.5",
     "flaschenpost": "5.0.47"
   },
