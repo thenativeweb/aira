@@ -1,6 +1,6 @@
 {
   "name": "aira",
-  "version": "1.1.7",
+  "version": "1.1.10",
   "description": "aira runs loops on Roland AIRA series synthesizers.",
   "contributors": [
     {
@@ -8,19 +8,21 @@
       "email": "golo.roden@thenativeweb.io"
     }
   ],
+  "private": false,
   "main": "build/lib/aira.js",
   "types": "build/lib/aira.d.ts",
   "dependencies": {
-    "defekt": "7.3.2",
+    "defekt": "8.0.0",
     "easymidi": "2.0.5",
-    "flaschenpost": "5.0.43"
+    "flaschenpost": "5.0.49"
   },
   "devDependencies": {
     "@types/mocha": "9.0.0",
-    "assertthat": "6.3.9",
-    "roboter": "11.7.8",
+    "assertthat": "6.3.13",
+    "roboter": "12.2.4",
     "semantic-release-configuration": "2.0.5"
   },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git://github.com/thenativeweb/aira.git"
