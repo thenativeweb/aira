@@ -1,31 +1,29 @@
-import { Bar } from './Bar';
-import { createPattern } from './createPattern';
-import { createPatterns } from './createPatterns';
-import { crescendo } from './crescendo';
-import { getNoteLengths } from './utils/getNoteLengths';
-import { Instrument } from './drivers/Instrument';
-import { MidiConnection } from './types/MidiConnection';
-import { MidiValue } from './types/MidiValue';
-import { Signature } from './Signature';
-import { Song } from './Song';
-import { Step } from './Step';
-import { System8 } from './drivers/System8';
-import { Tb3 } from './drivers/Tb3';
-import { Tr8 } from './drivers/Tr8';
+import { Bar } from './music/elements/Bar';
+import { createNoteStep } from './music/patterns/createNoteStep';
+import { createPattern } from './music/patterns/createPattern';
+import { createPatterns } from './music/patterns/createPatterns';
+import { createRestStep } from './music/patterns/createRestStep';
+import { crescendo } from './music/patterns/effects/crescendo';
+import { MidiConnection } from './midi/MidiConnection';
+import { NoteStep } from './music/patterns/NoteStep';
+import { RestStep } from './music/patterns/RestStep';
+import { Song } from './music/arrangement/Song';
+import { Step } from './music/patterns/Step';
+import { System8, Tb3, Tr8 } from './instruments';
 
 export {
   Bar,
+  createNoteStep,
   createPattern,
   createPatterns,
+  createRestStep,
   crescendo,
-  getNoteLengths,
-  Instrument,
   MidiConnection,
-  MidiValue,
-  Signature,
+  NoteStep,
+  RestStep,
   Song,
-  Step,
   System8,
+  Step,
   Tb3,
   Tr8
 };
