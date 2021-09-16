@@ -1,17 +1,14 @@
 import { Configuration } from './Configuration';
 import { Instrument } from '../Instrument';
-import { MidiChannel } from '../../types/MidiChannel';
+import { MidiConnection } from '../../types/MidiConnection';
 import { MidiValue } from '../../types/MidiValue';
-import { Note } from '../../types/Note';
-import { Octave } from '../../types/Octave';
 
 class Tb3 extends Instrument {
-  public constructor ({ port, channel, configuration }: {
-    port: string;
-    channel: MidiChannel;
+  public constructor ({ connection, configuration }: {
+    connection: MidiConnection;
     configuration?: Configuration;
   }) {
-    super({ port, channel });
+    super({ connection });
 
     if (configuration?.sound) {
       this.selectSound({ value: configuration.sound });
@@ -22,15 +19,6 @@ class Tb3 extends Instrument {
     if (configuration?.resonance) {
       this.setResonance({ value: configuration.resonance });
     }
-  }
-
-  public playNote ({ note, octave, velocity, length }: {
-    note: Note;
-    octave: Octave;
-    velocity?: MidiValue;
-    length: number;
-  }): void {
-    super.playNote({ note, octave, length, velocity });
   }
 
   public setCutoff ({ value }: {

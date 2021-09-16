@@ -1,5 +1,5 @@
 import { getNoteValue } from '../utils/getNoteValue';
-import { MidiChannel } from '../types/MidiChannel';
+import { MidiConnection } from '../types/MidiConnection';
 import { MidiValue } from '../types/MidiValue';
 import { Note } from '../types/Note';
 import { Octave } from '../types/Octave';
@@ -10,12 +10,11 @@ abstract class Instrument {
 
   protected readonly channel: Channel;
 
-  public constructor ({ port, channel }: {
-    port: string;
-    channel: MidiChannel;
+  public constructor ({ connection }: {
+    connection: MidiConnection;
   }) {
-    this.port = new Output(port, false);
-    this.channel = channel - 1 as Channel;
+    this.port = new Output(connection.port, false);
+    this.channel = connection.channel - 1 as Channel;
   }
 
   protected setContinuousController ({ controller, value }: {
@@ -38,7 +37,7 @@ abstract class Instrument {
     });
   }
 
-  protected playNote ({ note, octave, velocity = 127, length }: {
+  public playNote ({ note, octave, velocity = 127, length }: {
     note: Note;
     octave: Octave;
     velocity?: MidiValue;

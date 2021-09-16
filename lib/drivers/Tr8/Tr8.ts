@@ -2,16 +2,17 @@ import { Configuration } from './Configuration';
 import { Drumset } from './Drumset';
 import { drumsets } from './drumsets';
 import { Instrument } from '../Instrument';
-import { MidiChannel } from '../../types/MidiChannel';
+import { MidiConnection } from '../../types/MidiConnection';
 import { MidiValue } from '../../types/MidiValue';
+import { Note } from '../../types/Note';
+import { Octave } from '../../types/Octave';
 
 class Tr8 extends Instrument {
-  public constructor ({ port, channel, configuration }: {
-    port: string;
-    channel: MidiChannel;
+  public constructor ({ connection, configuration }: {
+    connection: MidiConnection;
     configuration?: Partial<Configuration>;
   }) {
-    super({ port, channel });
+    super({ connection });
 
     if (configuration?.drumset) {
       this.selectDrumset({ drumset: configuration.drumset });
@@ -113,11 +114,8 @@ class Tr8 extends Instrument {
     this.selectSound({ value: drumsets[drumset] });
   }
 
-  public bassDrum ({ length, velocity }: {
-    length: number;
-    velocity?: MidiValue;
-  }): void {
-    this.playNote({ note: 'c', octave: 2, length, velocity });
+  public static bassDrum (): { note: Note; octave: Octave } {
+    return { note: 'c', octave: 2 };
   }
 
   public setBassDrumTune ({ value }: {
@@ -144,11 +142,8 @@ class Tr8 extends Instrument {
     this.setContinuousController({ controller: 22, value });
   }
 
-  public snareDrum ({ length, velocity }: {
-    length: number;
-    velocity?: MidiValue;
-  }): void {
-    this.playNote({ note: 'd', octave: 2, length, velocity });
+  public static snareDrum (): { note: Note; octave: Octave } {
+    return { note: 'd', octave: 2 };
   }
 
   public setSnareDrumTune ({ value }: {
@@ -175,11 +170,8 @@ class Tr8 extends Instrument {
     this.setContinuousController({ controller: 27, value });
   }
 
-  public lowTom ({ length, velocity }: {
-    length: number;
-    velocity?: MidiValue;
-  }): void {
-    this.playNote({ note: 'g', octave: 2, length, velocity });
+  public static lowTom (): { note: Note; octave: Octave } {
+    return { note: 'g', octave: 2 };
   }
 
   public setLowTomTune ({ value }: {
@@ -194,11 +186,8 @@ class Tr8 extends Instrument {
     this.setContinuousController({ controller: 47, value });
   }
 
-  public midTom ({ length, velocity }: {
-    length: number;
-    velocity?: MidiValue;
-  }): void {
-    this.playNote({ note: 'b', octave: 2, length, velocity });
+  public static midTom (): { note: Note; octave: Octave } {
+    return { note: 'b', octave: 2 };
   }
 
   public setMidTomTune ({ value }: {
@@ -213,11 +202,8 @@ class Tr8 extends Instrument {
     this.setContinuousController({ controller: 50, value });
   }
 
-  public highTom ({ length, velocity }: {
-    length: number;
-    velocity?: MidiValue;
-  }): void {
-    this.playNote({ note: 'd', octave: 3, length, velocity });
+  public static highTom (): { note: Note; octave: Octave } {
+    return { note: 'd', octave: 3 };
   }
 
   public setHighTomTune ({ value }: {
@@ -232,11 +218,8 @@ class Tr8 extends Instrument {
     this.setContinuousController({ controller: 53, value });
   }
 
-  public rimShot ({ length, velocity }: {
-    length: number;
-    velocity?: MidiValue;
-  }): void {
-    this.playNote({ note: 'c#', octave: 2, length, velocity });
+  public static rimShot (): { note: Note; octave: Octave } {
+    return { note: 'c#', octave: 2 };
   }
 
   public setRimShotTune ({ value }: {
@@ -251,11 +234,8 @@ class Tr8 extends Instrument {
     this.setContinuousController({ controller: 56, value });
   }
 
-  public handClap ({ length, velocity }: {
-    length: number;
-    velocity?: MidiValue;
-  }): void {
-    this.playNote({ note: 'd#', octave: 2, length, velocity });
+  public static handClap (): { note: Note; octave: Octave } {
+    return { note: 'd#', octave: 2 };
   }
 
   public setHandClapTune ({ value }: {
@@ -270,11 +250,8 @@ class Tr8 extends Instrument {
     this.setContinuousController({ controller: 59, value });
   }
 
-  public closedHihat ({ length, velocity }: {
-    length: number;
-    velocity?: MidiValue;
-  }): void {
-    this.playNote({ note: 'f#', octave: 2, length, velocity });
+  public static closedHihat (): { note: Note; octave: Octave } {
+    return { note: 'f#', octave: 2 };
   }
 
   public setClosedHihatTune ({ value }: {
@@ -289,11 +266,8 @@ class Tr8 extends Instrument {
     this.setContinuousController({ controller: 62, value });
   }
 
-  public openHihat ({ length, velocity }: {
-    length: number;
-    velocity?: MidiValue;
-  }): void {
-    this.playNote({ note: 'a#', octave: 2, length, velocity });
+  public static openHihat (): { note: Note; octave: Octave } {
+    return { note: 'a#', octave: 2 };
   }
 
   public setOpenHihatTune ({ value }: {
@@ -308,11 +282,8 @@ class Tr8 extends Instrument {
     this.setContinuousController({ controller: 81, value });
   }
 
-  public crashCymbal ({ length, velocity }: {
-    length: number;
-    velocity?: MidiValue;
-  }): void {
-    this.playNote({ note: 'c#', octave: 3, length, velocity });
+  public static crashCymbal (): { note: Note; octave: Octave } {
+    return { note: 'c#', octave: 3 };
   }
 
   public setCrashCymbalTune ({ value }: {
@@ -327,11 +298,8 @@ class Tr8 extends Instrument {
     this.setContinuousController({ controller: 84, value });
   }
 
-  public rideCymbal ({ length, velocity }: {
-    length: number;
-    velocity?: MidiValue;
-  }): void {
-    this.playNote({ note: 'd#', octave: 3, length, velocity });
+  public static rideCymbal (): { note: Note; octave: Octave } {
+    return { note: 'd#', octave: 3 };
   }
 
   public setRideCymbalTune ({ value }: {
