@@ -1,9 +1,9 @@
 import { defekt } from 'defekt';
 
-class OperationInvalid extends defekt({ code: 'OperationInvalid' }) {}
+class MidiValueOutOfRange extends defekt({ code: 'MidiValueOutOfRange' }) {}
 class PatternLengthInvalid extends defekt({ code: 'PatternLengthInvalid' }) {}
 
 export {
-  OperationInvalid,
+  MidiValueOutOfRange,
   PatternLengthInvalid
 };
