@@ -2,7 +2,6 @@ import { Bar } from '../aira';
 import { DavidGoloSong } from './DavidGoloSong';
 import http from 'http';
 import {
-  __,
   bass,
   bassdrum,
   closedHihat,

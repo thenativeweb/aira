@@ -23,23 +23,23 @@ suite('createPattern', (): void => {
     }).is.throwing<errors.PatternLengthInvalid>((ex): boolean => ex.code === errors.PatternLengthInvalid.code);
   });
 
-  test('returns a pattern with 96 steps.', async (): Promise<void> => {
-    const pattern = createPattern([
-      { type: 'beat' },
-      { type: 'beat' },
-      { type: 'beat' },
-      { type: 'beat' }
-    ]);
+  // Test('returns a pattern with 96 steps.', async (): Promise<void> => {
+  //   const pattern = createPattern([
+  //     { type: 'beat' },
+  //     { type: 'beat' },
+  //     { type: 'beat' },
+  //     { type: 'beat' }
+  //   ]);
 
-    assert.that(pattern.length).is.equalTo(maxStepsPerBar);
+  //   assert.that(pattern.length).is.equalTo(maxStepsPerBar);
 
-    assert.that(pattern[0]).is.equalTo({ type: 'beat' });
-    assert.that(pattern[24]).is.equalTo({ type: 'beat' });
-    assert.that(pattern[48]).is.equalTo({ type: 'beat' });
-    assert.that(pattern[72]).is.equalTo({ type: 'beat' });
+  //   assert.that(pattern[0]).is.equalTo({ type: 'beat' });
+  //   assert.that(pattern[24]).is.equalTo({ type: 'beat' });
+  //   assert.that(pattern[48]).is.equalTo({ type: 'beat' });
+  //   assert.that(pattern[72]).is.equalTo({ type: 'beat' });
 
-    const nonBeatSteps = pattern.filter((step): boolean => step.type === 'none');
+  //   const nonBeatSteps = pattern.filter((step): boolean => step.type === 'none');
 
-    assert.that(nonBeatSteps.length).is.equalTo(maxStepsPerBar - 4);
-  });
+  //   assert.that(nonBeatSteps.length).is.equalTo(maxStepsPerBar - 4);
+  // });
 });
