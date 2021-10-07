@@ -32,7 +32,8 @@ class RemoteSynthesizer implements Synthesizer {
         noteValue,
         velocity,
         length
-      }
+      },
+      method: 'POST'
     }).catch((ex): void => {
       // eslint-disable-next-line no-console
       console.error('Error on play-note request', ex);
@@ -41,7 +42,8 @@ class RemoteSynthesizer implements Synthesizer {
 
   public stop (): void {
     axios({
-      url: `${this.url}/stop`
+      url: `${this.url}/stop`,
+      method: 'POST'
     }).catch((ex): void => {
       // eslint-disable-next-line no-console
       console.error('Error on stop request:', ex);
