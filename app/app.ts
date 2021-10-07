@@ -1,39 +1,13 @@
-import { Bar } from '../lib/aira';
 import { DavidGoloSong } from './songs/DavidGoloSong';
-import http from 'http';
-import {
-  bass,
-  bassdrum,
-  closedHihat,
-  crashCymbal,
-  snaredrum
-} from './songs/DavidGoloSong/patterns';
+import { LocalSynthesizer } from '../lib/aira';
+
+const tr8 = new LocalSynthesizer({ connection: { port: 'MX-1 USB1', channel: 10 }});
+const tb3 = new LocalSynthesizer({ connection: { port: 'MX-1 USB3', channel: 2 }});
+const system8 = new LocalSynthesizer({ connection: { port: 'MX-1 USB4', channel: 1 }});
 
 const song = new DavidGoloSong({
-  connections: {
-    tr8: { port: 'MX-1 USB1', channel: 10 },
-    tb3: { port: 'MX-1 USB3', channel: 2 },
-    system8: { port: 'MX-1 USB4', channel: 1 }
-  }
+  synthesizers: { tr8, tb3, system8 }
 });
-
-const server = http.createServer((req, res): void => {
-  res.end();
-
-  const abc = [ 'a', 'b', 'c' ];
-  const randomNumber1 = Math.floor(Math.random() * 3);
-  const randomNumber2 = Math.floor(Math.random() * 3);
-  const bd = bassdrum[abc[randomNumber1]];
-  const sd = snaredrum[abc[randomNumber2]];
-
-  const bar: Bar = [
-    bd, sd, closedHihat.a, crashCymbal.c, bass.a
-  ];
-
-  song.addBar(bar);
-});
-
-server.listen(3_000);
 
 process.on('SIGINT', async (): Promise<void> => {
   await song.stop();

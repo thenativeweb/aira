@@ -1,6 +1,3 @@
-import { Connections } from './Connections';
-import { getInstruments } from './getInstruments';
-import { Song } from '../../../lib/aira';
 import {
   __,
   bass,
@@ -9,23 +6,25 @@ import {
   crashCymbal,
   snaredrum
 } from './patterns';
+import { Song, Synthesizer } from '../../../lib/aira';
 
 class DavidGoloSong extends Song {
-  public constructor ({ connections }: {
-    connections: Connections;
+  public constructor ({ synthesizers }: {
+    synthesizers: {
+      tr8: Synthesizer;
+      tb3: Synthesizer;
+      system8: Synthesizer;
+    };
   }) {
-    const { tr8, tb3, system8 } = getInstruments({ connections });
-
     super({
-      instruments: [ tr8, tb3, system8 ],
       loopLastBar: true,
       bpm: 137,
       tracks: [
-        { name: 'Bassdrum', instrument: tr8 },
-        { name: 'Snaredrum', instrument: tr8 },
-        { name: 'Closed Hihat', instrument: tr8 },
-        { name: 'Crash Cymbal', instrument: tr8 },
-        { name: 'Bass Sawwave', instrument: tb3 }
+        { name: 'Bassdrum', synthesizer: synthesizers.tr8 },
+        { name: 'Snaredrum', synthesizer: synthesizers.tr8 },
+        { name: 'Closed Hihat', synthesizer: synthesizers.tr8 },
+        { name: 'Crash Cymbal', synthesizer: synthesizers.tr8 },
+        { name: 'Bass Sawwave', synthesizer: synthesizers.tb3 }
       ],
       bars: [
         /* eslint-disable no-multi-spaces */
