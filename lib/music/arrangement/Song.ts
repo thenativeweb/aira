@@ -1,14 +1,11 @@
 import { Bar } from '../elements/Bar';
 import { getStepIndex } from '../patterns/getStepIndex';
-import { Instrument } from '../../instruments/Instrument';
 import { isRestStep } from '../patterns/isRestStep';
 import { setTimeout } from 'timers/promises';
 import { Signature } from '../elements/Signature';
 import { Track } from './Track';
 
 abstract class Song {
-  protected instruments: Instrument[];
-
   private readonly loopLastBar: boolean;
 
   protected bpm: number;
@@ -19,14 +16,12 @@ abstract class Song {
 
   private signature?: Signature;
 
-  public constructor ({ instruments, loopLastBar, bpm, tracks, bars }: {
-    instruments: Instrument[];
+  public constructor ({ loopLastBar, bpm, tracks, bars }: {
     loopLastBar: boolean;
     bpm: number;
     tracks: Track[];
     bars: Bar[];
   }) {
-    this.instruments = instruments;
     this.loopLastBar = loopLastBar;
     this.bpm = bpm;
     this.tracks = tracks;
@@ -57,11 +52,10 @@ abstract class Song {
             continue;
           }
 
-          const { instrument } = this.tracks[trackIndex];
+          const { synthesizer } = this.tracks[trackIndex];
 
-          instrument.playNote({
-            note: step.note,
-            octave: step.octave,
+          synthesizer.playNote({
+            noteValue: step.noteValue,
             velocity: step.velocity,
             length: 100
           });
@@ -91,8 +85,8 @@ abstract class Song {
     this.signature?.stop();
     this.signature = undefined;
 
-    for (const instrument of this.instruments) {
-      instrument.stop();
+    for (const track of this.tracks) {
+      track.synthesizer.stop();
     }
 
     // eslint-disable-next-line @typescript-eslint/no-implied-eval

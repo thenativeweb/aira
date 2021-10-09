@@ -1,8 +1,8 @@
-import { Instrument } from '../../instruments/Instrument';
+import { Synthesizer } from '../../midi/Synthesizer';
 
 interface Track {
   name: string;
-  instrument: Instrument;
+  synthesizer: Synthesizer;
 }
 
 export { Track };

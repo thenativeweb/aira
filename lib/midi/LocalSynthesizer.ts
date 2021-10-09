@@ -1,11 +1,9 @@
-import { getNoteValue } from '../music/elements/getNoteValue';
-import { MidiConnection } from '../midi/MidiConnection';
-import { MidiValue } from '../midi/MidiValue';
-import { Note } from '../music/elements/Note';
-import { Octave } from '../music/elements/Octave';
+import { MidiConnection } from './MidiConnection';
+import { MidiValue } from './MidiValue';
+import { Synthesizer } from './Synthesizer';
 import { Channel, Output } from 'easymidi';
 
-abstract class Instrument {
+class LocalSynthesizer implements Synthesizer {
   protected readonly port: Output;
 
   protected readonly channel: Channel;
@@ -17,8 +15,8 @@ abstract class Instrument {
     this.channel = connection.channel - 1 as Channel;
   }
 
-  protected setContinuousController ({ controller, value }: {
-    controller: number;
+  public setController ({ controller, value }: {
+    controller: MidiValue;
     value: MidiValue;
   }): void {
     this.port.send('cc', {
@@ -28,7 +26,7 @@ abstract class Instrument {
     });
   }
 
-  protected selectSound ({ value }: {
+  public selectSound ({ value }: {
     value: MidiValue;
   }): void {
     this.port.send('program', {
@@ -37,22 +35,21 @@ abstract class Instrument {
     });
   }
 
-  public playNote ({ note, octave, velocity = 127, length }: {
-    note: Note;
-    octave: Octave;
+  public playNote ({ noteValue, velocity = 127, length }: {
+    noteValue: MidiValue;
     velocity?: MidiValue;
     length: number;
   }): void {
     this.port.send('noteon', {
       channel: this.channel,
-      note: getNoteValue({ note, octave }),
+      note: noteValue,
       velocity
     });
 
     setTimeout((): void => {
       this.port.send('noteoff', {
         channel: this.channel,
-        note: getNoteValue({ note, octave }),
+        note: noteValue,
         velocity
       });
     }, length);
@@ -69,4 +66,4 @@ abstract class Instrument {
   }
 }
 
-export { Instrument };
+export { LocalSynthesizer };
