@@ -1,5 +1,5 @@
 import { Percent } from './Percent';
-import * as errors from './errors';
+import * as errors from '../errors';
 
 const createPercent = function (value: number): Percent {
   if (value < 0 || value > 100) {

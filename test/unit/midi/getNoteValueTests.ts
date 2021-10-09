@@ -1,5 +1,5 @@
 import { assert } from 'assertthat';
-import { getNoteValue } from '../../../../lib/music/elements/getNoteValue';
+import { getNoteValue } from '../../../lib/midi/getNoteValue';
 
 suite('getNoteValue', (): void => {
   test('returns 0 for C-1.', async (): Promise<void> => {
