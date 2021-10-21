@@ -17,7 +17,7 @@
   "types": "build/lib/aira.d.ts",
   "dependencies": {
     "defekt": "8.0.0",
-    "easymidi": "2.0.5"
+    "easymidi": "2.1.0"
   },
   "devDependencies": {
     "assertthat": "6.3.13",
