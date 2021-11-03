@@ -54,7 +54,7 @@ const getSynthesizersApi = function ({ synthesizers }: {
     api.use(`/${name}`, synthesizerApi);
   }
 
-  const checkNext = (waitTime = 100): void => {
+  const checkNext = (waitTime = 250): void => {
     setTimeout((): void => {
       const current = actionQueue.shift();
 
