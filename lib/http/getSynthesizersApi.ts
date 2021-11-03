@@ -4,6 +4,11 @@ import { Synthesizer } from '../midi/Synthesizer';
 import express, { Application } from 'express';
 import { isNil, sortBy } from 'lodash';
 
+type ActionQueue = {
+  time: number;
+  action: () => void;
+}[];
+
 const getSynthesizersApi = function ({ synthesizers }: {
   synthesizers: Record<string, Synthesizer>;
 }): Application {
@@ -11,10 +16,7 @@ const getSynthesizersApi = function ({ synthesizers }: {
 
   api.use(express.json());
 
-  let priorityQueue: {
-    time: number;
-    action: () => void;
-  }[] = [];
+  let actionQueue: ActionQueue = [];
 
   for (const [ name, synthesizer ] of Object.entries(synthesizers)) {
     const synthesizerApi = express();
@@ -24,14 +26,14 @@ const getSynthesizersApi = function ({ synthesizers }: {
       res.status(204).end();
       const playNoteBody = req.body as PlayNoteBody;
 
-      priorityQueue = [
-        ...priorityQueue,
+      actionQueue = [
+        ...actionQueue,
         {
           time: playNoteBody.time,
           action: (): void => synthesizer.playNote(playNoteBody.playNoteParameters)
         }
       ];
-      priorityQueue = sortBy(priorityQueue, (current): number => current.time);
+      actionQueue = sortBy(actionQueue, (current): number => current.time);
     });
 
     // eslint-disable-next-line @typescript-eslint/no-loop-func
@@ -40,37 +42,36 @@ const getSynthesizersApi = function ({ synthesizers }: {
 
       const { time } = req.body as StopBody;
 
-      priorityQueue = [
-        ...priorityQueue,
+      actionQueue = [
+        ...actionQueue,
         {
           time,
           action: (): void => synthesizer.stop()
         }];
-      priorityQueue = sortBy(priorityQueue, (current): number => current.time);
+      actionQueue = sortBy(actionQueue, (current): number => current.time);
     });
 
     api.use(`/${name}`, synthesizerApi);
   }
 
-  const checkNext = (waitTime = 2_000): void => {
+  const checkNext = (waitTime = 100): void => {
     setTimeout((): void => {
-      const [ current, next ] = priorityQueue;
+      const current = actionQueue.shift();
 
       if (isNil(current)) {
         return checkNext();
       }
 
       current.action();
+      actionQueue = actionQueue.slice(1);
+
+      const [ next ] = actionQueue;
 
       if (isNil(next)) {
         return checkNext();
       }
 
-      const currentActionTime = current.time;
-
-      priorityQueue = priorityQueue.slice(1);
-
-      checkNext(next.time - currentActionTime);
+      checkNext(next.time - current.time);
     }, waitTime);
   };
 
