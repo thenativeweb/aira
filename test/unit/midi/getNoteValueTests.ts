@@ -1,5 +1,6 @@
 import { assert } from 'assertthat';
 import { getNoteValue } from '../../../lib/midi/getNoteValue';
+import { sortBy } from 'lodash';
 
 suite('getNoteValue', (): void => {
   test('returns 0 for C-1.', async (): Promise<void> => {
@@ -16,5 +17,15 @@ suite('getNoteValue', (): void => {
 
   test('returns 42 for F#2.', async (): Promise<void> => {
     assert.that(getNoteValue({ note: 'f#', octave: 2 })).is.equalTo(42);
+  });
+
+  test('lodash mutates arrays.', async (): Promise<void> => {
+    const array = [
+      { time: 2 }, { time: 1 }
+    ];
+
+    const newArray = sortBy(array, (current): number => current.time);
+
+    assert.that(newArray === array).is.false();
   });
 });

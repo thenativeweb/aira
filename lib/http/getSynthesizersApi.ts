@@ -1,5 +1,8 @@
+import { PlayNoteBody } from './PlayNoteBody';
+import { StopBody } from './StopBody';
 import { Synthesizer } from '../midi/Synthesizer';
 import express, { Application } from 'express';
+import { isNil, sortBy } from 'lodash';
 
 const getSynthesizersApi = function ({ synthesizers }: {
   synthesizers: Record<string, Synthesizer>;
@@ -8,23 +11,65 @@ const getSynthesizersApi = function ({ synthesizers }: {
 
   api.use(express.json());
 
+  let priorityQueue: {
+    time: number;
+    action: () => void;
+  }[] = [];
+
   for (const [ name, synthesizer ] of Object.entries(synthesizers)) {
     const synthesizerApi = express();
 
+    // eslint-disable-next-line @typescript-eslint/no-loop-func
     synthesizerApi.post('/play-note', (req, res): void => {
       res.status(204).end();
-      const { noteValue, velocity, length } = req.body;
+      const playNoteBody = req.body as PlayNoteBody;
 
-      synthesizer.playNote({ noteValue, velocity, length });
+      priorityQueue.push({
+        time: playNoteBody.time,
+        action: (): void => synthesizer.playNote(playNoteBody.playNoteParameters)
+      });
+      priorityQueue = sortBy(priorityQueue, (current): number => current.time);
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-loop-func
     synthesizerApi.post('/stop', (req, res): void => {
       res.status(204).end();
-      synthesizer.stop();
+
+      const { time } = req.body as StopBody;
+
+      priorityQueue.push({
+        time,
+        action: (): void => synthesizer.stop()
+      });
+      priorityQueue = sortBy(priorityQueue, (current): number => current.time);
     });
 
     api.use(`/${name}`, synthesizerApi);
   }
+
+  const checkNext = (waitTime = 2_000): void => {
+    setTimeout((): void => {
+      const [ current, next ] = priorityQueue;
+
+      if (isNil(current)) {
+        return checkNext();
+      }
+
+      current.action();
+
+      if (isNil(next)) {
+        return;
+      }
+
+      const currentActionTime = current.time;
+
+      priorityQueue.slice(1);
+
+      checkNext(next.time - currentActionTime);
+    }, waitTime);
+  };
+
+  checkNext();
 
   return api;
 };
