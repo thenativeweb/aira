@@ -63,7 +63,7 @@ const getSynthesizersApi = function ({ synthesizers }: {
 
       const currentActionTime = current.time;
 
-      priorityQueue.slice(1);
+      priorityQueue = priorityQueue.slice(1);
 
       checkNext(next.time - currentActionTime);
     }, waitTime);
