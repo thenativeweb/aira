@@ -5,6 +5,7 @@ import { createPatterns } from './music/patterns/createPatterns';
 import { createRestStep } from './music/patterns/createRestStep';
 import { crescendo } from './music/patterns/effects/crescendo';
 import { getNoteValue } from './midi/getNoteValue';
+import { getSynthesizersApi } from './http/getSynthesizersApi';
 import { LocalSynthesizer } from './midi/LocalSynthesizer';
 import { MidiConnection } from './midi/MidiConnection';
 import { NoteStep } from './music/patterns/NoteStep';
@@ -22,6 +23,7 @@ export {
   createRestStep,
   crescendo,
   getNoteValue,
+  getSynthesizersApi,
   LocalSynthesizer,
   MidiConnection,
   NoteStep,
