@@ -63,7 +63,7 @@ const getSynthesizersApi = function ({ synthesizers }: {
       current.action();
 
       if (isNil(next)) {
-        return;
+        return checkNext();
       }
 
       const currentActionTime = current.time;
