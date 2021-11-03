@@ -63,7 +63,6 @@ const getSynthesizersApi = function ({ synthesizers }: {
       }
 
       current.action();
-      actionQueue = actionQueue.slice(1);
 
       const [ next ] = actionQueue;
 
