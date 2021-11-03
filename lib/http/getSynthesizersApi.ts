@@ -24,10 +24,13 @@ const getSynthesizersApi = function ({ synthesizers }: {
       res.status(204).end();
       const playNoteBody = req.body as PlayNoteBody;
 
-      priorityQueue.push({
-        time: playNoteBody.time,
-        action: (): void => synthesizer.playNote(playNoteBody.playNoteParameters)
-      });
+      priorityQueue = [
+        ...priorityQueue,
+        {
+          time: playNoteBody.time,
+          action: (): void => synthesizer.playNote(playNoteBody.playNoteParameters)
+        }
+      ];
       priorityQueue = sortBy(priorityQueue, (current): number => current.time);
     });
 
@@ -37,10 +40,12 @@ const getSynthesizersApi = function ({ synthesizers }: {
 
       const { time } = req.body as StopBody;
 
-      priorityQueue.push({
-        time,
-        action: (): void => synthesizer.stop()
-      });
+      priorityQueue = [
+        ...priorityQueue,
+        {
+          time,
+          action: (): void => synthesizer.stop()
+        }];
       priorityQueue = sortBy(priorityQueue, (current): number => current.time);
     });
 
