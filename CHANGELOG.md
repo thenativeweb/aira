@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/thenativeweb/aira/compare/1.1.10...1.2.0) (2021-11-04)
+
+
+### Features
+
+* Implement remote synthesizers. ([#44](https://github.com/thenativeweb/aira/issues/44)) ([7ee7334](https://github.com/thenativeweb/aira/commit/7ee733491f1a444e38c5e292628798385f056f34))
+
 ## [1.1.10](https://github.com/thenativeweb/aira/compare/1.1.9...1.1.10) (2021-08-24)
 
 
