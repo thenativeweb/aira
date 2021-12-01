@@ -24,6 +24,8 @@ const createPlayer = function ({ song, synthesizers }: {
         // - Die Signatur liefert die Takt- und Notenwertinformationen
         // - Abhängig von deren Zustand lesen wir dann aus dem Score aus,
         //   was die nächsten abzuspielenden Noten sind
+        // - Noch mal hinterfragen, ob das wirklich ein Generator sein muss
+        //   oder ob das nicht auch ohne geht.
       } while (isPlaying);
     },
 
