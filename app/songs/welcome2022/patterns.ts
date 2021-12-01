@@ -49,10 +49,10 @@ const __ = createPattern([ _ ]);
 /* eslint-enable id-length, no-underscore-dangle, @typescript-eslint/naming-convention */
 
 export {
-  bassdrum,
-  snaredrum,
-  closedHihat,
-  crashCymbal,
-  bass,
+  bassdrum as bd,
+  snaredrum as sd,
+  closedHihat as ch,
+  crashCymbal as cc,
+  bass as bs,
   __
 };
