@@ -1,23 +1,24 @@
 import { setTimeout } from 'timers/promises';
 
-const pulsesPerBeat = 24;
-
-const createMetronome = async function * ({ bpm }: {
+const createMetronome = async function * ({ bpm, ppqn }: {
   bpm: number;
-}): AsyncGenerator<number, void, undefined> {
-  const millisecondsPerPulse = 60_000 / bpm / pulsesPerBeat;
-  let pulseCounter = 0;
+  ppqn: number;
+}): AsyncGenerator<void, void, undefined> {
+  const abortController = new AbortController();
 
-  while (true) {
-    const cancel = yield pulseCounter;
+  try {
+    const millisecondsPerPulse = 60_000 / bpm / ppqn;
+    const { signal } = abortController;
 
-    if (cancel) {
-      return;
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    while (true) {
+      // eslint-disable-next-line @typescript-eslint/no-implied-eval
+      await setTimeout(millisecondsPerPulse, null, { signal });
+      yield;
     }
-
-    await setTimeout(millisecondsPerPulse);
-    pulseCounter = (pulseCounter + 1) % 24;
+  } finally {
+    abortController.abort();
   }
 };
 
-export { createMetronome };
+export { createMetronome };

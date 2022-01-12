@@ -1,6 +1,5 @@
-import { Bar } from '../elements/Bar';
+import { Score } from './Score';
 import { Synthesizer } from '../../midi/Synthesizer';
-import { Track } from '../arrangement/Track';
 
 interface Song {
   cover: {
@@ -8,11 +7,7 @@ interface Song {
   };
   score: ({ synthesizers }: {
     synthesizers: Record<string, Synthesizer>;
-  }) => {
-    bpm: number;
-    tracks: Track[];
-    bars: Bar[];
-  };
+  }) => Score;
 }
 
 export { Song };

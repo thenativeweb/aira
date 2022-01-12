@@ -1,4 +1,3 @@
-import { Song } from '../../../lib/aira';
 import {
   __,
   bd,
@@ -7,12 +6,13 @@ import {
   ch,
   sd
 } from './patterns';
+import { Score, Song } from '../../../lib/aira';
 
 const welcome2022: Song = {
   cover: {
     title: 'Welcome 2022'
   },
-  score ({ synthesizers: { tr8, tb3 } }) {
+  score ({ synthesizers: { tr8, tb3 }}): Score {
     const trBd = { synthesizer: tr8 };
     const trSd = { synthesizer: tr8 };
     const trCh = { synthesizer: tr8 };
@@ -40,4 +40,4 @@ const welcome2022: Song = {
   }
 };
 
-export { welcome2022 };
+export { welcome2022 };

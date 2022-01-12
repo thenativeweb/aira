@@ -12,6 +12,7 @@ import { LocalSynthesizer } from './midi/LocalSynthesizer';
 import { MidiConnection } from './midi/MidiConnection';
 import { NoteStep } from './music/patterns/NoteStep';
 import { RestStep } from './music/patterns/RestStep';
+import { Score } from './music/arrangement/Score';
 import { Song } from './music/arrangement/Song';
 import { Step } from './music/patterns/Step';
 import { Synthesizer } from './midi/Synthesizer';
@@ -32,6 +33,7 @@ export {
   MidiConnection,
   NoteStep,
   RestStep,
+  Score,
   Song,
   Step,
   Synthesizer,
