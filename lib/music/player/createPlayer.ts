@@ -49,7 +49,7 @@ const createPlayer = function ({ song, synthesizers }: {
         }
 
         for (const [ trackIndex, track ] of bar.entries()) {
-          const step = track[position.beat * ppqn + position.pulse];
+          const step = track[(position.beat * ppqn) + position.pulse];
 
           if (step.type === 'note') {
             score.tracks[trackIndex].synthesizer.playNote({
@@ -63,7 +63,7 @@ const createPlayer = function ({ song, synthesizers }: {
 
       playerState.setStopped();
 
-      await resetSynthesizers({ synthesizers: Object.values(synthesizers)});
+      await resetSynthesizers({ synthesizers: Object.values(synthesizers) });
     },
 
     async stop (): Promise<void> {

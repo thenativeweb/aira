@@ -55,7 +55,7 @@ suite('createSignature', (): void => {
 
   test('handling pulses for four quarters returns the next bar.', async (): Promise<void> => {
     const signature = createSignature({ ppqn });
-    const position = handlePulseTimes({ signature, count: 4 * ppqn + 1 });
+    const position = handlePulseTimes({ signature, count: (4 * ppqn) + 1 });
 
     assert.that(position).is.equalTo(createPosition({
       bar: 1,

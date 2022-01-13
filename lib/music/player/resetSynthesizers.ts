@@ -1,9 +1,9 @@
-import { setTimeout } from 'timers/promises';
+import { setTimeout } from 'timers/promises';
 import { Synthesizer } from '../../midi/Synthesizer';
 
 const resetSynthesizers = async function ({ synthesizers }: {
   synthesizers: Synthesizer[];
-}) {
+}): Promise<void> {
   for (const synthesizer of synthesizers) {
     synthesizer.stop();
   }
