@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/thenativeweb/aira/compare/1.2.0...1.2.1) (2022-01-25)
+
+
+### Bug Fixes
+
+* bump axios from 0.24.0 to 0.25.0 ([#50](https://github.com/thenativeweb/aira/issues/50)) ([c7685d3](https://github.com/thenativeweb/aira/commit/c7685d343759c901f64a7686f135e6af4ab72a92))
+
 # [1.2.0](https://github.com/thenativeweb/aira/compare/1.1.10...1.2.0) (2021-11-04)
 
 

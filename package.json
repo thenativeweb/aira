@@ -1,6 +1,6 @@
 {
   "name": "aira",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "aira runs loops on Roland AIRA series synthesizers.",
   "contributors": [
     {
