@@ -1,5 +1,5 @@
-import { PlayNoteBody } from './PlayNoteBody';
 import { StopBody } from './StopBody';
+import { StrikeNoteBody } from './StrikeNoteBody';
 import { Synthesizer } from '../midi/Synthesizer';
 import express, { Application } from 'express';
 import { isNil, sortBy } from 'lodash';
@@ -24,13 +24,13 @@ const getSynthesizersApi = function ({ synthesizers }: {
     // eslint-disable-next-line @typescript-eslint/no-loop-func
     synthesizerApi.post('/play-note', (req, res): void => {
       res.status(204).end();
-      const playNoteBody = req.body as PlayNoteBody;
+      const strikeNoteBody = req.body as StrikeNoteBody;
 
       actionQueue = [
         ...actionQueue,
         {
-          time: playNoteBody.time,
-          action: (): void => synthesizer.playNote(playNoteBody.playNoteParameters)
+          time: strikeNoteBody.time,
+          action: (): void => synthesizer.strikeNote(strikeNoteBody.strikeNoteParameters)
         }
       ];
       actionQueue = sortBy(actionQueue, (current): number => current.time);

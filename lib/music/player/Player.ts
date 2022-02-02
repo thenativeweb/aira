@@ -1,6 +1,7 @@
+import { Stop } from './Stop';
+
 interface Player {
-  play: () => Promise<void>;
-  stop: () => Promise<void>;
+  play: () => Promise<Stop>;
 }
 
 export { Player };

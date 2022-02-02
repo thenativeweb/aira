@@ -15,12 +15,12 @@ const player = createPlayer({
   synthesizers: { tr8, tb3 }
 });
 
-process.on('SIGINT', async (): Promise<void> => {
-  await player.stop();
-  process.exit();
-});
-
 // eslint-disable-next-line @typescript-eslint/no-floating-promises
 (async (): Promise<void> => {
-  await player.play();
+  const stop = await player.play();
+
+  process.on('SIGINT', async (): Promise<void> => {
+    await stop();
+    process.exit();
+  });
 })();

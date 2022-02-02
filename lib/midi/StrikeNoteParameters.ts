@@ -1,11 +1,8 @@
 import { MidiValue } from './MidiValue';
 
-interface PlayNoteParameters {
+interface StrikeNoteParameters {
   noteValue: MidiValue;
   velocity?: MidiValue;
-  length: number;
 }
 
-export {
-  PlayNoteParameters
-};
+export { StrikeNoteParameters };

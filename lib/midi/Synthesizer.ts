@@ -1,5 +1,5 @@
 import { MidiValue } from './MidiValue';
-import { PlayNoteParameters } from './PlayNoteParameters';
+import { StrikeNoteParameters } from './StrikeNoteParameters';
 
 interface Synthesizer {
   setController: ({ controller, value }: {
@@ -11,7 +11,7 @@ interface Synthesizer {
     value: MidiValue;
   }) => void;
 
-  playNote: ({ noteValue, velocity, length }: PlayNoteParameters) => void;
+  strikeNote: ({ noteValue, velocity }: StrikeNoteParameters) => void;
 
   stop: () => void;
 }
