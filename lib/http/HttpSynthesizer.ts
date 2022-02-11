@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { StopBody } from './StopBody';
 import { StrikeNoteBody } from './StrikeNoteBody';
+import { ReleaseNoteParameters } from '../midi/ReleaseNoteParameters';
 import { StrikeNoteParameters } from '../midi/StrikeNoteParameters';
 import { Synthesizer } from '../midi/Synthesizer';
 
@@ -32,6 +33,10 @@ class HttpSynthesizer implements Synthesizer {
       url: `${this.url}/play-note`,
       data
     });
+  }
+
+  public async releaseNote ({ noteValue, velocity }: ReleaseNoteParameters): Promise<void> {
+    // TODO: Endpoint needed
   }
 
   public async stop (): Promise<void> {

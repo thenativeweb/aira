@@ -1,12 +1,13 @@
 import { NoteStep } from './NoteStep';
 
-type FactoryArguments = Pick<NoteStep, 'noteValue' | 'velocity'>;
+type FactoryArguments = Pick<NoteStep, 'noteValue' | 'velocity' | 'durationValue'>;
 
-const createNoteStep = function ({ noteValue, velocity }: FactoryArguments): NoteStep {
+const createNoteStep = function ({ noteValue, velocity, durationValue }: FactoryArguments): NoteStep {
   return {
     type: 'note',
     noteValue,
-    velocity
+    velocity,
+    durationValue
   };
 };
 

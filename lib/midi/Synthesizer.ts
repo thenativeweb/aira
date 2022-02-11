@@ -1,4 +1,5 @@
 import { MidiValue } from './MidiValue';
+import { ReleaseNoteParameters } from './ReleaseNoteParameters';
 import { StrikeNoteParameters } from './StrikeNoteParameters';
 
 interface Synthesizer {
@@ -12,6 +13,8 @@ interface Synthesizer {
   }) => void;
 
   strikeNote: ({ noteValue, velocity }: StrikeNoteParameters) => void;
+
+  releaseNote: ({ noteValue, velocity }: ReleaseNoteParameters) => void;
 
   stop: () => void;
 }

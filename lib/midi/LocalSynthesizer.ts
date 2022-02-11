@@ -1,8 +1,10 @@
 import { MidiConnection } from './MidiConnection';
 import { MidiValue } from './MidiValue';
+import { ReleaseNoteParameters } from './ReleaseNoteParameters';
 import { StrikeNoteParameters } from './StrikeNoteParameters';
 import { Synthesizer } from './Synthesizer';
 import { Channel, Output } from 'easymidi';
+import { createMidiValue } from './createMidiValue';
 
 class LocalSynthesizer implements Synthesizer {
   protected readonly port: Output;
@@ -44,13 +46,17 @@ class LocalSynthesizer implements Synthesizer {
     });
   }
 
+  public releaseNote ({ noteValue, velocity = 127 }: ReleaseNoteParameters): void {
+    this.port.send('noteoff', {
+      channel: this.channel,
+      note: noteValue,
+      velocity
+    });
+  }
+
   public stop (): void {
     for (let noteValue = 0; noteValue <= 127; noteValue++) {
-      this.port.send('noteoff', {
-        channel: this.channel,
-        note: noteValue,
-        velocity: 127
-      });
+      this.releaseNote({ noteValue: createMidiValue(noteValue)});
     }
   }
 }

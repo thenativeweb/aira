@@ -1,14 +1,14 @@
 import { createNoteStep, createPattern, createPatterns, createRestStep, crescendo, getNoteValue, NoteStep, RestStep, Step, tr8 } from '../../../lib/aira';
 
 /* eslint-disable id-length, no-underscore-dangle, @typescript-eslint/naming-convention */
-const BD: NoteStep = createNoteStep({ noteValue: tr8.bassDrum(), velocity: 127 });
-const bd: NoteStep = createNoteStep({ noteValue: tr8.bassDrum(), velocity: 40 });
-const SD: NoteStep = createNoteStep({ noteValue: tr8.snareDrum(), velocity: 127 });
-const sd: NoteStep = createNoteStep({ noteValue: tr8.snareDrum(), velocity: 80 });
-const CH: NoteStep = createNoteStep({ noteValue: tr8.closedHihat(), velocity: 127 });
-const ch: NoteStep = createNoteStep({ noteValue: tr8.closedHihat(), velocity: 40 });
-const CC: NoteStep = createNoteStep({ noteValue: tr8.crashCymbal(), velocity: 127 });
-const _: RestStep = createRestStep();
+const BD: Step = [createNoteStep({ noteValue: tr8.bassDrum(), velocity: 127, durationValue: 0.0625 })];
+const bd: Step = [createNoteStep({ noteValue: tr8.bassDrum(), velocity: 40, durationValue: 0.0625 })];
+const SD: Step = [createNoteStep({ noteValue: tr8.snareDrum(), velocity: 127, durationValue: 0.0625 })];
+const sd: Step = [createNoteStep({ noteValue: tr8.snareDrum(), velocity: 80, durationValue: 0.0625 })];
+const CH: Step = [createNoteStep({ noteValue: tr8.closedHihat(), velocity: 127, durationValue: 0.0625 })];
+const ch: Step = [createNoteStep({ noteValue: tr8.closedHihat(), velocity: 40, durationValue: 0.0625 })];
+const CC: Step = [createNoteStep({ noteValue: tr8.crashCymbal(), velocity: 127, durationValue: 0.0625 })];
+const _: Step = [createRestStep()];
 
 const bassdrum = createPatterns({
   a: [ BD, _, _, _, BD, _, _, _, BD, _, _, _, BD, _, bd, _ ],
@@ -30,14 +30,14 @@ const crashCymbal = createPatterns({
   c: [ CC, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ ]
 });
 
-const a: Step = createNoteStep({ noteValue: getNoteValue({ note: 'a', octave: 1 }), velocity: 127 });
-const A: Step = createNoteStep({ noteValue: getNoteValue({ note: 'a', octave: 2 }), velocity: 127 });
-const d: Step = createNoteStep({ noteValue: getNoteValue({ note: 'd', octave: 1 }), velocity: 127 });
-const D: Step = createNoteStep({ noteValue: getNoteValue({ note: 'd', octave: 2 }), velocity: 127 });
-const e: Step = createNoteStep({ noteValue: getNoteValue({ note: 'e', octave: 1 }), velocity: 127 });
-const E: Step = createNoteStep({ noteValue: getNoteValue({ note: 'e', octave: 2 }), velocity: 127 });
-const f: Step = createNoteStep({ noteValue: getNoteValue({ note: 'f', octave: 1 }), velocity: 127 });
-const F: Step = createNoteStep({ noteValue: getNoteValue({ note: 'f', octave: 2 }), velocity: 127 });
+const a: Step = [createNoteStep({ noteValue: getNoteValue({ note: 'a', octave: 1 }), velocity: 127, durationValue: 0.0625 })];
+const A: Step = [createNoteStep({ noteValue: getNoteValue({ note: 'a', octave: 2 }), velocity: 127, durationValue: 0.0625 })];
+const d: Step = [createNoteStep({ noteValue: getNoteValue({ note: 'd', octave: 1 }), velocity: 127, durationValue: 0.0625 })];
+const D: Step = [createNoteStep({ noteValue: getNoteValue({ note: 'd', octave: 2 }), velocity: 127, durationValue: 0.0625 })];
+const e: Step = [createNoteStep({ noteValue: getNoteValue({ note: 'e', octave: 1 }), velocity: 127, durationValue: 0.0625 })];
+const E: Step = [createNoteStep({ noteValue: getNoteValue({ note: 'e', octave: 2 }), velocity: 127, durationValue: 0.0625 })];
+const f: Step = [createNoteStep({ noteValue: getNoteValue({ note: 'f', octave: 1 }), velocity: 127, durationValue: 0.0625 })];
+const F: Step = [createNoteStep({ noteValue: getNoteValue({ note: 'f', octave: 2 }), velocity: 127, durationValue: 0.0625 })];
 
 const bass = createPatterns({
   a: [ _, a, A, a, _, A, a, A, _, a, A, a, _, A, a, A ],
