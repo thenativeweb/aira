@@ -8,9 +8,10 @@ const handleStep = function ({ step, track }: {
   // eslint-disable-next-line default-case
   switch (step.type) {
     case 'note': {
-      track.synthesizer.strikeNote({
+      track.synthesizer.playNote({
         noteValue: step.noteValue,
-        velocity: step.velocity
+        velocity: step.velocity,
+        duration: 100
       });
       break;
     }

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { StopBody } from './StopBody';
-import { StrikeNoteBody } from './StrikeNoteBody';
-import { StrikeNoteParameters } from '../midi/StrikeNoteParameters';
+import { PlayNoteBody } from './PlayNoteBody';
+import { PlayNoteParameters } from '../midi/PlayNoteParameters';
 import { Synthesizer } from '../midi/Synthesizer';
 
 class HttpSynthesizer implements Synthesizer {
@@ -21,10 +21,10 @@ class HttpSynthesizer implements Synthesizer {
     throw new Error('Not implemented.');
   }
 
-  public async strikeNote (strikeNoteParameters: StrikeNoteParameters): Promise<void> {
-    const data: StrikeNoteBody = {
+  public async playNote (playNoteParameters: PlayNoteParameters): Promise<void> {
+    const data: PlayNoteBody = {
       time: Date.now(),
-      strikeNoteParameters
+      playNoteParameters
     };
 
     await axios({

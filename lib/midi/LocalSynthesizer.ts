@@ -1,6 +1,6 @@
 import { MidiConnection } from './MidiConnection';
 import { MidiValue } from './MidiValue';
-import { StrikeNoteParameters } from './StrikeNoteParameters';
+import { PlayNoteParameters } from './PlayNoteParameters';
 import { Synthesizer } from './Synthesizer';
 import { Channel, Output } from 'easymidi';
 
@@ -36,12 +36,21 @@ class LocalSynthesizer implements Synthesizer {
     });
   }
 
-  public strikeNote ({ noteValue, velocity = 127 }: StrikeNoteParameters): void {
+  public playNote ({ noteValue, velocity = 127, duration }: PlayNoteParameters): void {
     this.port.send('noteon', {
       channel: this.channel,
       note: noteValue,
       velocity
     });
+
+    setTimeout(() => {
+      this.port.send('noteoff', {
+        channel: this.channel,
+        note: noteValue,
+        velocity: 127
+      });
+    }, duration);
+
   }
 
   public stop (): void {
