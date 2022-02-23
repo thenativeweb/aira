@@ -20,7 +20,7 @@
     "axios": "0.26.0",
     "defekt": "8.1.0",
     "easymidi": "2.1.0",
-    "express": "4.17.2",
+    "express": "4.17.3",
     "flaschenpost": "5.0.50",
     "lodash": "4.17.21",
     "processenv": "3.0.9"
