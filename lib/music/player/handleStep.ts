@@ -1,9 +1,11 @@
 import { Step } from '../patterns/Step';
 import { Track } from '../arrangement/Track';
+import { translateDuration } from './translateDuration';
 
-const handleStep = function ({ step, track }: {
+const handleStep = function ({ step, track, bpm }: {
   step: Step;
   track: Track;
+  bpm: number;
 }): void {
   // eslint-disable-next-line default-case
   switch (step.type) {
@@ -11,7 +13,7 @@ const handleStep = function ({ step, track }: {
       track.synthesizer.playNote({
         noteValue: step.noteValue,
         velocity: step.velocity,
-        duration: 100
+        duration: translateDuration({ duration: step.duration, bpm})
       });
       break;
     }

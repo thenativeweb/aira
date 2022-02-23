@@ -5,11 +5,12 @@ import { Score } from '../arrangement/Score';
 import { Signature } from '../elements/Signature';
 import { Stop } from './Stop';
 
-const loop = async function ({ score, metronome, signature, stop }: {
+const loop = async function ({ score, metronome, signature, stop, bpm }: {
   score: Score;
   metronome: Metronome;
   signature: Signature;
   stop: Stop;
+  bpm: number;
 }): Promise<void> {
   // eslint-disable-next-line @typescript-eslint/naming-convention, @typescript-eslint/no-unused-vars
   for await (const _ of metronome) {
@@ -26,7 +27,7 @@ const loop = async function ({ score, metronome, signature, stop }: {
       const track = score.tracks[trackIndex];
       const step = pattern[(position.beat * ppqn) + position.pulse];
 
-      handleStep({ step, track });
+      handleStep({ step, track, bpm });
     }
   }
 };

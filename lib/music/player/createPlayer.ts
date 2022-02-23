@@ -31,7 +31,7 @@ const createPlayer = function ({ song, synthesizers }: {
       await resetSynthesizers({ synthesizers: Object.values(synthesizers) });
 
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      loop({ score, metronome, signature, stop });
+      loop({ score, metronome, signature, stop, bpm: score.bpm });
 
       return stop;
     }

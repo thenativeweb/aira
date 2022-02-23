@@ -1,10 +1,5 @@
 import { MidiValue } from '../../midi/MidiValue';
-
-type Numerator = number;
-type Denominator = number;
-type Modifier = '' | '.' | 't';
-
-type Duration = `${Numerator}/${Denominator}${Modifier}`;
+import { Duration } from '../elements/Duration';
 
 interface NoteStep {
   type: 'note';
