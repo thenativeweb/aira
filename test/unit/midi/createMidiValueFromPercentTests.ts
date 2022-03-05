@@ -1,7 +1,6 @@
 import { assert } from 'assertthat';
 import { createMidiValueFromPercent } from '../../../lib/midi/createMidiValueFromPercent';
 import { createPercent } from '../../../lib/math/createPercent';
-import { MidiValueOutOfRange } from '../../../lib/errors';
 
 suite('createMidiValueFromPercent', (): void => {
   test('returns a MIDI value for the given percent value.', async (): Promise<void> => {
