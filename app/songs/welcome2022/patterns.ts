@@ -15,6 +15,7 @@ const bassdrum = createPatterns({
   b: [ BD, _, _, _, BD, _, _, _, BD, _, _, bd, BD, _, bd, bd ],
   c: [ BD, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ ]
 });
+
 const snaredrum = createPatterns({
   a: [ _, _, _, _, SD, _, _, _, _, _, _, _, SD, _, _, sd ],
   b: [ _, _, _, _, SD, _, _, _, _, sd, sd, sd, SD, _, SD, SD ],
@@ -27,6 +28,7 @@ const snaredrum = createPatterns({
 const closedHihat = createPatterns({
   a: [ _, ch, CH, ch, _, ch, CH, ch, _, ch, CH, ch, _, ch, CH, ch ]
 });
+
 const crashCymbal = createPatterns({
   c: [ CC, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ ]
 });
@@ -46,6 +48,7 @@ const bass = createPatterns({
   c: [ _, e, E, e, _, E, e, E, _, e, E, e, _, E, e, E ],
   d: [ _, f, F, f, _, F, f, F, _, f, F, f, _, F, f, F ]
 });
+
 const __ = createPattern([ _ ]);
 /* eslint-enable id-length, no-underscore-dangle, @typescript-eslint/naming-convention */
 

@@ -24,7 +24,12 @@ const loop = async function ({ score, metronome, signature, stop, bpm }: {
     }
 
     for (const [ trackIndex, pattern ] of bar.entries()) {
-      const track = score.tracks[trackIndex];
+      const track = Object.values(score.tracks)[trackIndex];
+
+      if (track.mute) {
+        continue;
+      }
+
       const step = pattern[(position.beat * ppqn) + position.pulse];
 
       handleStep({ step, track, bpm });

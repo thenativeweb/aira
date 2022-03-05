@@ -3,7 +3,7 @@ import { Track } from './Track';
 
 interface Score {
   bpm: number;
-  tracks: Track[];
+  tracks: Record<string, Track>;
   bars: Bar[];
 }
 

@@ -18,13 +18,6 @@ const handleStep = function ({ step, track, bpm }: {
       break;
     }
     case 'rest': {
-      // TODO:
-      // - strike vs note aufräumen (Naming)
-      // - rest vs release aufräumen (Naming)
-      // - strike, release und legato implementieren
-      //   - Dafür noch mal Patterns und Steps überdenken
-      // - Demo-Song wieder ans Laufen bekommen
-      // - Tests schreiben
       break;
     }
   }

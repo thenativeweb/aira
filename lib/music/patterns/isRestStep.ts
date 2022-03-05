@@ -5,6 +5,4 @@ const isRestStep = function (step: Step): step is RestStep {
   return step.type === 'rest';
 };
 
-export {
-  isRestStep
-};
+export { isRestStep };

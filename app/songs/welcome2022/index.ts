@@ -1,42 +1,38 @@
-import {
-  __,
-  bd,
-  bs,
-  cc,
-  ch,
-  sd
-} from './patterns';
+import { __, bd, bs, cc, ch, sd } from './patterns';
 import { Score, Song } from '../../../lib/aira';
 
 const welcome2022: Song = {
   cover: {
     title: 'Welcome 2022'
   },
-  score ({ synthesizers: { tr8, tb3 }}): Score {
-    const trBd = { synthesizer: tr8 };
-    const trSd = { synthesizer: tr8 };
-    const trCh = { synthesizer: tr8 };
-    const trCc = { synthesizer: tr8 };
-    const trBs = { synthesizer: tb3 };
 
+  score ({ synthesizers: { tr8, tb3 }}): Score {
+    /* eslint-disable key-spacing, no-multi-spaces */
     return {
       bpm: 137,
-      tracks:
-        [ trBd, trSd, trCh, trCc, trBs ],
+      tracks: {
+        bassDrum:    { synthesizer: tr8 },
+        snareDrum:   { synthesizer: tr8 },
+        closedHiHat: { synthesizer: tr8 },
+        crashCymbal: { synthesizer: tr8, mute: true },
+        bassLine:    { synthesizer: tb3 }
+      },
       bars: [
-        /* eslint-disable no-multi-spaces */
+        // Intro
         [ bd.a, __,   ch.a, cc.c, bs.a ],
         [ bd.b, __,   ch.a, __,   bs.a ],
         [ bd.a, __,   ch.a, __,   bs.a ],
         [ bd.b, sd.c, ch.a, __,   bs.a ],
+
+        // Build-Up
         [ bd.a, sd.a, ch.a, cc.c, bs.a ],
         [ bd.b, sd.b, ch.a, __,   bs.b ],
         [ bd.a, sd.a, ch.a, __,   bs.c ],
         [ bd.b, sd.c, ch.a, __,   bs.d ],
         [ bd.c, __,   __,   cc.c, __ ]
-        /* eslint-enable no-multi-spaces */
       ]
     };
+    /* eslint-enable key-spacing, no-multi-spaces */
   }
 };
 

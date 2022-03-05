@@ -2,6 +2,4 @@ interface RestStep {
   type: 'rest';
 }
 
-export {
-  RestStep
-};
+export { RestStep };

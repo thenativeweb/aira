@@ -5,6 +5,4 @@ const createMidiValueFromPercent = function (value: Percent): MidiValue {
   return Math.ceil(127 / 100 * value) as MidiValue;
 };
 
-export {
-  createMidiValueFromPercent
-};
+export { createMidiValueFromPercent };

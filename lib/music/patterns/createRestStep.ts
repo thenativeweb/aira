@@ -6,6 +6,4 @@ const createRestStep = function (): RestStep {
   };
 };
 
-export {
-  createRestStep
-};
+export { createRestStep };
