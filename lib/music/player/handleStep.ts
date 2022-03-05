@@ -13,7 +13,7 @@ const handleStep = function ({ step, track, bpm }: {
       track.synthesizer.playNote({
         noteValue: step.noteValue,
         velocity: step.velocity,
-        duration: translateDuration({ duration: step.duration, bpm})
+        duration: translateDuration({ duration: step.duration, bpm })
       });
       break;
     }

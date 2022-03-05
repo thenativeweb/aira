@@ -24,9 +24,8 @@ const snaredrum = createPatterns({
   ])
 });
 
-
 const closedHihat = createPatterns({
-a: [ _, ch, CH, ch, _, ch, CH, ch, _, ch, CH, ch, _, ch, CH, ch ]
+  a: [ _, ch, CH, ch, _, ch, CH, ch, _, ch, CH, ch, _, ch, CH, ch ]
 });
 const crashCymbal = createPatterns({
   c: [ CC, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ ]

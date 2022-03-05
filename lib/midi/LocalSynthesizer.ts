@@ -43,14 +43,13 @@ class LocalSynthesizer implements Synthesizer {
       velocity
     });
 
-    setTimeout(() => {
+    setTimeout((): void => {
       this.port.send('noteoff', {
         channel: this.channel,
         note: noteValue,
         velocity: 127
       });
     }, duration);
-
   }
 
   public stop (): void {

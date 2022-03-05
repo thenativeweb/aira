@@ -1,5 +1,5 @@
-import { StopBody } from './StopBody';
 import { PlayNoteBody } from './PlayNoteBody';
+import { StopBody } from './StopBody';
 import { Synthesizer } from '../midi/Synthesizer';
 import express, { Application } from 'express';
 import { isNil, sortBy } from 'lodash';

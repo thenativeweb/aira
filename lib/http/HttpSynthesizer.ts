@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { StopBody } from './StopBody';
 import { PlayNoteBody } from './PlayNoteBody';
 import { PlayNoteParameters } from '../midi/PlayNoteParameters';
+import { StopBody } from './StopBody';
 import { Synthesizer } from '../midi/Synthesizer';
 
 class HttpSynthesizer implements Synthesizer {

@@ -1,13 +1,8 @@
 import { NoteStep } from './NoteStep';
 
+type FactoryArguments = Pick<NoteStep, 'noteValue' | 'velocity' | 'duration'>;
 
-type FactoryArguments = Pick<NoteStep, 'noteValue' | 'velocity' | 'duration'>
-
-const createNoteStep = function ({
-  noteValue,
-  velocity,
-  duration
-}: FactoryArguments): NoteStep {
+const createNoteStep = function ({ noteValue, velocity, duration }: FactoryArguments): NoteStep {
   return {
     type: 'note',
     noteValue,
@@ -16,6 +11,4 @@ const createNoteStep = function ({
   };
 };
 
-export {
-  createNoteStep
-};
+export { createNoteStep };

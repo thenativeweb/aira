@@ -1,9 +1,7 @@
 type Numerator = number;
 type Denominator = number;
-type Modifier = '' | '.' | 't';
+type Modifier = '' | 'D' | 'T';
 
 type Duration = `${Numerator}/${Denominator}${Modifier}`;
 
-export {
-    Duration
-};
+export { Duration };
