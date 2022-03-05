@@ -10,6 +10,7 @@ const welcome2022: Song = {
     /* eslint-disable key-spacing, no-multi-spaces */
     return {
       bpm: 137,
+
       tracks: {
         bassDrum:    { synthesizer: tr8 },
         snareDrum:   { synthesizer: tr8 },
@@ -17,6 +18,7 @@ const welcome2022: Song = {
         crashCymbal: { synthesizer: tr8, mute: true },
         bassLine:    { synthesizer: tb3 }
       },
+
       bars: [
         // Intro
         [ bd.a, __,   ch.a, cc.c, bs.a ],
