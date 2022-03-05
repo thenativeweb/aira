@@ -22,8 +22,7 @@
     "easymidi": "2.1.0",
     "express": "4.17.3",
     "flaschenpost": "5.0.50",
-    "lodash": "4.17.21",
-    "processenv": "3.0.9"
+    "lodash": "4.17.21"
   },
   "devDependencies": {
     "assertthat": "6.4.0",
