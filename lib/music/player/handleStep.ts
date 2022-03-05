@@ -1,6 +1,6 @@
+import { getMillisecondsFromDuration } from './getMillisecondsFromDuration';
 import { Step } from '../patterns/Step';
 import { Track } from '../arrangement/Track';
-import { translateDuration } from './translateDuration';
 
 const handleStep = function ({ step, track, bpm }: {
   step: Step;
@@ -13,7 +13,7 @@ const handleStep = function ({ step, track, bpm }: {
       track.synthesizer.playNote({
         noteValue: step.noteValue,
         velocity: step.velocity,
-        duration: translateDuration({ duration: step.duration, bpm })
+        duration: getMillisecondsFromDuration({ duration: step.duration, bpm })
       });
       break;
     }
