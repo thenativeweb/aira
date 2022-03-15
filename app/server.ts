@@ -7,8 +7,7 @@ const logger = flaschenpost.getLogger();
 const api = getSynthesizersApi({
   synthesizers: {
     tr8: new LocalSynthesizer({ connection: { port: 'MX-1 USB1', channel: 10 }}),
-    tb3: new LocalSynthesizer({ connection: { port: 'MX-1 USB3', channel: 2 }}),
-    system8: new LocalSynthesizer({ connection: { port: 'MX-1 USB4', channel: 1 }})
+    tb3: new LocalSynthesizer({ connection: { port: 'MX-1 USB3', channel: 2 }})
   }
 });
 

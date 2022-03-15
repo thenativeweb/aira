@@ -11,7 +11,7 @@ interface Synthesizer {
     value: MidiValue;
   }) => void;
 
-  playNote: ({ noteValue, velocity, length }: PlayNoteParameters) => void;
+  playNote: ({ noteValue, velocity }: PlayNoteParameters) => void;
 
   stop: () => void;
 }

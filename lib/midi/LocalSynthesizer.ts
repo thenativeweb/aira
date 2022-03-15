@@ -36,7 +36,7 @@ class LocalSynthesizer implements Synthesizer {
     });
   }
 
-  public playNote ({ noteValue, velocity = 127, length }: PlayNoteParameters): void {
+  public playNote ({ noteValue, velocity = 127, duration }: PlayNoteParameters): void {
     this.port.send('noteon', {
       channel: this.channel,
       note: noteValue,
@@ -47,9 +47,9 @@ class LocalSynthesizer implements Synthesizer {
       this.port.send('noteoff', {
         channel: this.channel,
         note: noteValue,
-        velocity
+        velocity: 127
       });
-    }, length);
+    }, duration);
   }
 
   public stop (): void {

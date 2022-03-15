@@ -47,6 +47,4 @@ class HttpSynthesizer implements Synthesizer {
   }
 }
 
-export {
-  HttpSynthesizer
-};
+export { HttpSynthesizer };

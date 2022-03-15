@@ -1,11 +1,11 @@
 import { MidiValue } from './MidiValue';
 
+type Milliseconds = number;
+
 interface PlayNoteParameters {
   noteValue: MidiValue;
   velocity?: MidiValue;
-  length: number;
+  duration: Milliseconds;
 }
 
-export {
-  PlayNoteParameters
-};
+export { PlayNoteParameters };

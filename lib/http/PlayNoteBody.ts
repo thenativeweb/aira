@@ -5,6 +5,4 @@ interface PlayNoteBody {
   playNoteParameters: PlayNoteParameters;
 }
 
-export {
-  PlayNoteBody
-};
+export { PlayNoteBody };
