@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/thenativeweb/aira/compare/1.2.1...1.3.0) (2022-03-15)
+
+
+### Features
+
+* Refactor song ([#62](https://github.com/thenativeweb/aira/issues/62)) ([5ae6137](https://github.com/thenativeweb/aira/commit/5ae6137b38b8f6712a6cc846d0e8902436180c5c))
+
 ## [1.2.1](https://github.com/thenativeweb/aira/compare/1.2.0...1.2.1) (2022-01-25)
 
 
