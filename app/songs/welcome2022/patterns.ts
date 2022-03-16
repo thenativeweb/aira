@@ -1,4 +1,4 @@
-import { createNoteStep, createPattern, createPatterns, createRestStep, crescendo, getNoteValue, tr8 } from '../../../lib/aira';
+import { createMultiNoteStep, createNoteStep, createPattern, createPatterns, createRestStep, crescendo, getNoteValue, tr8 } from '../../../lib/aira';
 
 /* eslint-disable id-length, no-underscore-dangle, @typescript-eslint/naming-convention */
 const BD = createNoteStep({ noteValue: tr8.bassDrum(), velocity: 127, duration: '1/16' });
@@ -49,12 +49,37 @@ const bass = createPatterns({
   d: [ _, f, F, f, _, F, f, F, _, f, F, f, _, F, f, F ]
 });
 
+const a3 = createNoteStep({ noteValue: getNoteValue({ note: 'a', octave: 3 }), velocity: 127, duration: '1/16' });
+const b3 = createNoteStep({ noteValue: getNoteValue({ note: 'b', octave: 3 }), velocity: 127, duration: '1/16' });
+const c4 = createNoteStep({ noteValue: getNoteValue({ note: 'c', octave: 4 }), velocity: 127, duration: '1/16' });
+const e4 = createNoteStep({ noteValue: getNoteValue({ note: 'e', octave: 4 }), velocity: 127, duration: '1/16' });
+const f4 = createNoteStep({ noteValue: getNoteValue({ note: 'f', octave: 4 }), velocity: 127, duration: '1/16' });
+const g4 = createNoteStep({ noteValue: getNoteValue({ note: 'g', octave: 4 }), velocity: 127, duration: '1/16' });
+const a4 = createNoteStep({ noteValue: getNoteValue({ note: 'a', octave: 4 }), velocity: 127, duration: '1/16' });
+const c5 = createNoteStep({ noteValue: getNoteValue({ note: 'c', octave: 5 }), velocity: 127, duration: '1/16' });
+const d5 = createNoteStep({ noteValue: getNoteValue({ note: 'd', octave: 5 }), velocity: 127, duration: '1/16' });
+const e5 = createNoteStep({ noteValue: getNoteValue({ note: 'e', octave: 5 }), velocity: 127, duration: '1/16' });
+const f5 = createNoteStep({ noteValue: getNoteValue({ note: 'f', octave: 5 }), velocity: 127, duration: '1/16' });
+
+const Am = createMultiNoteStep([ a3, e4, c5 ]);
+const Dm = createMultiNoteStep([ a3, f4, d5 ]);
+const Em = createMultiNoteStep([ b3, g4, e5 ]);
+const Fd = createMultiNoteStep([ c4, a4, f5 ]);
+
+const chords = createPatterns({
+  a: [ Am, _, _, Am, _, _, Am, _, _, Am, _, _, Am, _, Am, _ ],
+  b: [ Dm, _, _, Dm, _, _, Dm, _, _, Dm, _, _, Dm, _, Dm, _ ],
+  c: [ Em, _, _, Em, _, _, Em, _, _, Em, _, _, Em, _, Em, _ ],
+  d: [ Fd, _, _, Fd, _, _, Fd, _, _, Fd, _, _, Fd, _, Fd, _ ]
+});
+
 const __ = createPattern([ _ ]);
 /* eslint-enable id-length, no-underscore-dangle, @typescript-eslint/naming-convention */
 
 export {
   bassdrum as bd,
   snaredrum as sd,
+  chords as cd,
   closedHihat as ch,
   crashCymbal as cc,
   bass as bs,

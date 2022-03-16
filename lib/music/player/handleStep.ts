@@ -9,6 +9,12 @@ const handleStep = function ({ step, track, bpm }: {
 }): void {
   // eslint-disable-next-line default-case
   switch (step.type) {
+    case 'multiNote': {
+      for (const innerStep of step.steps) {
+        handleStep({ step: innerStep, track, bpm });
+      }
+      break;
+    }
     case 'note': {
       track.synthesizer.playNote({
         noteValue: step.noteValue,
