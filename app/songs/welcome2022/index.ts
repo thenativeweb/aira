@@ -15,7 +15,7 @@ const welcome2022: Song = {
         bassDrum:    { synthesizer: tr8 },
         snareDrum:   { synthesizer: tr8 },
         closedHiHat: { synthesizer: tr8 },
-        crashCymbal: { synthesizer: tr8, mute: true },
+        crashCymbal: { synthesizer: tr8, mute: false },
         bassLine:    { synthesizer: tb3 }
       },
 
