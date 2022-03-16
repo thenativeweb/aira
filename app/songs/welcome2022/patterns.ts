@@ -66,6 +66,32 @@ const Dm = createMultiNoteStep([ a3, f4, d5 ]);
 const Em = createMultiNoteStep([ b3, g4, e5 ]);
 const Fd = createMultiNoteStep([ c4, a4, f5 ]);
 
+// TODO
+// - createPatterns, createPattern, createStep sind von außen verfügbar
+// - createNote und createController werden intern genutzt, um das
+//   menschenlesbare Format in ein maschinenlesbares umzuwandeln
+// - createStep gibt einen Step zurück, der *immer* aus einem Array von
+//   Noten- und Controller-Objekten besteht
+// - RestStep entfällt, das ist einfach ein Step mit leerem Array
+// - Damit entfallen (hoffentlich) alle switch-case-Statements
+// - Eine Fallunterscheidung werden wir weiterhin haben: Note vs Controller
+// - Crescendo-Funktion muss überarbeitet werden, so dass sie auf Noten und
+//   Controller-Werten arbeiten kann
+// - Patterns übersichtlicher strukturieren
+// - Sounds zu Beginn konfigurieren (Program Change)
+
+/*
+const bla = { note: 'c', octave: 5, velocity: 127, duration: '1/16' };
+
+const restStep = createStep([]);
+
+const x = createStep([
+  { note: 'c', octave: 5, velocity: 127, duration: '1/16' },
+  { note: 'c', octave: 5, velocity: 127, duration: '1/16' },
+  { controller: 73, value: 115 }
+]);
+*/
+
 const chords = createPatterns({
   a: [ Am, _, _, Am, _, _, Am, _, _, Am, _, _, Am, _, Am, _ ],
   b: [ Dm, _, _, Dm, _, _, Dm, _, _, Dm, _, _, Dm, _, Dm, _ ],
