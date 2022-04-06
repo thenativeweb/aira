@@ -1,7 +1,9 @@
-import { MultiNoteStep } from './MultiNoteStep';
+import { ControllerStep } from './ControllerStep';
 import { NoteStep } from './NoteStep';
-import { RestStep } from './RestStep';
 
-type Step = MultiNoteStep | NoteStep | RestStep;
+interface Step {
+  notes: NoteStep[];
+  controllers: ControllerStep[];
+}
 
 export { Step };

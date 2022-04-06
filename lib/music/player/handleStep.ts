@@ -7,25 +7,15 @@ const handleStep = function ({ step, track, bpm }: {
   track: Track;
   bpm: number;
 }): void {
-  // eslint-disable-next-line default-case
-  switch (step.type) {
-    case 'multiNote': {
-      for (const innerStep of step.steps) {
-        handleStep({ step: innerStep, track, bpm });
-      }
-      break;
-    }
-    case 'note': {
-      track.synthesizer.playNote({
-        noteValue: step.noteValue,
-        velocity: step.velocity,
-        duration: getMillisecondsFromDuration({ duration: step.duration, bpm })
-      });
-      break;
-    }
-    case 'rest': {
-      break;
-    }
+  for (const note of step.notes) {
+    track.synthesizer.playNote({
+      noteValue: note.noteValue,
+      velocity: note.velocity,
+      duration: getMillisecondsFromDuration({ duration: note.duration, bpm })
+    });
+  }
+  for (const controller of step.controllers) {
+    track.synthesizer.setController(controller);
   }
 };
 

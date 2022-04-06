@@ -13,11 +13,11 @@ const welcome2022: Song = {
 
       tracks: {
         bassDrum:        { synthesizer: tr8 },
-        snareDrum:       { synthesizer: tr8 },
-        closedHiHat:     { synthesizer: tr8 },
-        crashCymbal:     { synthesizer: tr8, mute: false },
+        snareDrum:       { synthesizer: tr8, mute: true },
+        closedHiHat:     { synthesizer: tr8, mute: true },
+        crashCymbal:     { synthesizer: tr8, mute: true },
         bassLine:        { synthesizer: tb3 },
-        cinematicChords: { synthesizer: system1 }
+        cinematicChords: { synthesizer: system1, mute: true }
       },
 
       bars: [

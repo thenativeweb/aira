@@ -1,14 +1,23 @@
-import { createMultiNoteStep, createNoteStep, createPattern, createPatterns, createRestStep, crescendo, getNoteValue, tr8 } from '../../../lib/aira';
+import {
+  createControllerDescription,
+  createNoteDescription,
+  createPattern,
+  createPatterns,
+  createStep,
+  crescendo,
+  tb3,
+  tr8
+} from '../../../lib/aira';
 
 /* eslint-disable id-length, no-underscore-dangle, @typescript-eslint/naming-convention */
-const BD = createNoteStep({ noteValue: tr8.bassDrum(), velocity: 127, duration: '1/16' });
-const bd = createNoteStep({ noteValue: tr8.bassDrum(), velocity: 40, duration: '1/16' });
-const SD = createNoteStep({ noteValue: tr8.snareDrum(), velocity: 127, duration: '1/16' });
-const sd = createNoteStep({ noteValue: tr8.snareDrum(), velocity: 80, duration: '1/16' });
-const CH = createNoteStep({ noteValue: tr8.closedHihat(), velocity: 127, duration: '1/16' });
-const ch = createNoteStep({ noteValue: tr8.closedHihat(), velocity: 40, duration: '1/16' });
-const CC = createNoteStep({ noteValue: tr8.crashCymbal(), velocity: 127, duration: '1/16' });
-const _ = createRestStep();
+const BD = createStep([ createNoteDescription({ noteValue: tr8.bassDrum(), velocity: 127, duration: '1/16' }) ]);
+const bd = createStep([ createNoteDescription({ noteValue: tr8.bassDrum(), velocity: 40, duration: '1/16' }) ]);
+const SD = createStep([ createNoteDescription({ noteValue: tr8.snareDrum(), velocity: 127, duration: '1/16' }) ]);
+const sd = createStep([ createNoteDescription({ noteValue: tr8.snareDrum(), velocity: 80, duration: '1/16' }) ]);
+const CH = createStep([ createNoteDescription({ noteValue: tr8.closedHihat(), velocity: 127, duration: '1/16' }) ]);
+const ch = createStep([ createNoteDescription({ noteValue: tr8.closedHihat(), velocity: 40, duration: '1/16' }) ]);
+const CC = createStep([ createNoteDescription({ noteValue: tr8.crashCymbal(), velocity: 127, duration: '1/16' }) ]);
+const _ = createStep([]);
 
 const bassdrum = createPatterns({
   a: [ BD, _, _, _, BD, _, _, _, BD, _, _, _, BD, _, bd, _ ],
@@ -33,14 +42,46 @@ const crashCymbal = createPatterns({
   c: [ CC, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ ]
 });
 
-const a = createNoteStep({ noteValue: getNoteValue({ note: 'a', octave: 1 }), velocity: 127, duration: '1/16' });
-const A = createNoteStep({ noteValue: getNoteValue({ note: 'a', octave: 2 }), velocity: 127, duration: '1/16' });
-const d = createNoteStep({ noteValue: getNoteValue({ note: 'd', octave: 1 }), velocity: 127, duration: '1/16' });
-const D = createNoteStep({ noteValue: getNoteValue({ note: 'd', octave: 2 }), velocity: 127, duration: '1/16' });
-const e = createNoteStep({ noteValue: getNoteValue({ note: 'e', octave: 1 }), velocity: 127, duration: '1/16' });
-const E = createNoteStep({ noteValue: getNoteValue({ note: 'e', octave: 2 }), velocity: 127, duration: '1/16' });
-const f = createNoteStep({ noteValue: getNoteValue({ note: 'f', octave: 1 }), velocity: 127, duration: '1/16' });
-const F = createNoteStep({ noteValue: getNoteValue({ note: 'f', octave: 2 }), velocity: 127, duration: '1/16' });
+const a = createStep([
+  createNoteDescription({ note: 'a', octave: 1, velocity: 127, duration: '1/16' }),
+  createControllerDescription(tb3.cutoff({ value: 0 })),
+  createControllerDescription(tb3.resonance({ value: 0 }))
+]);
+const A = createStep([
+  createNoteDescription({ note: 'a', octave: 2, velocity: 127, duration: '1/16' }),
+  createControllerDescription(tb3.cutoff({ value: 0 })),
+  createControllerDescription(tb3.resonance({ value: 0 }))
+]);
+const d = createStep([
+  createNoteDescription({ note: 'd', octave: 1, velocity: 127, duration: '1/16' }),
+  createControllerDescription(tb3.cutoff({ value: 100 })),
+  createControllerDescription(tb3.resonance({ value: 100 }))
+]);
+const D = createStep([
+  createNoteDescription({ note: 'd', octave: 2, velocity: 127, duration: '1/16' }),
+  createControllerDescription(tb3.cutoff({ value: 100 })),
+  createControllerDescription(tb3.resonance({ value: 100 }))
+]);
+const e = createStep([
+  createNoteDescription({ note: 'e', octave: 1, velocity: 127, duration: '1/16' }),
+  createControllerDescription(tb3.cutoff({ value: 0 })),
+  createControllerDescription(tb3.resonance({ value: 0 }))
+]);
+const E = createStep([
+  createNoteDescription({ note: 'e', octave: 2, velocity: 127, duration: '1/16' }),
+  createControllerDescription(tb3.cutoff({ value: 0 })),
+  createControllerDescription(tb3.resonance({ value: 0 }))
+]);
+const f = createStep([
+  createNoteDescription({ note: 'f', octave: 1, velocity: 127, duration: '1/16' }),
+  createControllerDescription(tb3.cutoff({ value: 100 })),
+  createControllerDescription(tb3.resonance({ value: 100 }))
+]);
+const F = createStep([
+  createNoteDescription({ note: 'f', octave: 2, velocity: 127, duration: '1/16' }),
+  createControllerDescription(tb3.cutoff({ value: 100 })),
+  createControllerDescription(tb3.resonance({ value: 100 }))
+]);
 
 const bass = createPatterns({
   a: [ _, a, A, a, _, A, a, A, _, a, A, a, _, A, a, A ],
@@ -49,48 +90,22 @@ const bass = createPatterns({
   d: [ _, f, F, f, _, F, f, F, _, f, F, f, _, F, f, F ]
 });
 
-const a3 = createNoteStep({ noteValue: getNoteValue({ note: 'a', octave: 3 }), velocity: 127, duration: '1/16' });
-const b3 = createNoteStep({ noteValue: getNoteValue({ note: 'b', octave: 3 }), velocity: 127, duration: '1/16' });
-const c4 = createNoteStep({ noteValue: getNoteValue({ note: 'c', octave: 4 }), velocity: 127, duration: '1/16' });
-const e4 = createNoteStep({ noteValue: getNoteValue({ note: 'e', octave: 4 }), velocity: 127, duration: '1/16' });
-const f4 = createNoteStep({ noteValue: getNoteValue({ note: 'f', octave: 4 }), velocity: 127, duration: '1/16' });
-const g4 = createNoteStep({ noteValue: getNoteValue({ note: 'g', octave: 4 }), velocity: 127, duration: '1/16' });
-const a4 = createNoteStep({ noteValue: getNoteValue({ note: 'a', octave: 4 }), velocity: 127, duration: '1/16' });
-const c5 = createNoteStep({ noteValue: getNoteValue({ note: 'c', octave: 5 }), velocity: 127, duration: '1/16' });
-const d5 = createNoteStep({ noteValue: getNoteValue({ note: 'd', octave: 5 }), velocity: 127, duration: '1/16' });
-const e5 = createNoteStep({ noteValue: getNoteValue({ note: 'e', octave: 5 }), velocity: 127, duration: '1/16' });
-const f5 = createNoteStep({ noteValue: getNoteValue({ note: 'f', octave: 5 }), velocity: 127, duration: '1/16' });
+const a3 = createNoteDescription({ note: 'a', octave: 3, velocity: 127, duration: '1/16' });
+const b3 = createNoteDescription({ note: 'b', octave: 3, velocity: 127, duration: '1/16' });
+const c4 = createNoteDescription({ note: 'c', octave: 4, velocity: 127, duration: '1/16' });
+const e4 = createNoteDescription({ note: 'e', octave: 4, velocity: 127, duration: '1/16' });
+const f4 = createNoteDescription({ note: 'f', octave: 4, velocity: 127, duration: '1/16' });
+const g4 = createNoteDescription({ note: 'g', octave: 4, velocity: 127, duration: '1/16' });
+const a4 = createNoteDescription({ note: 'a', octave: 4, velocity: 127, duration: '1/16' });
+const c5 = createNoteDescription({ note: 'c', octave: 5, velocity: 127, duration: '1/16' });
+const d5 = createNoteDescription({ note: 'd', octave: 5, velocity: 127, duration: '1/16' });
+const e5 = createNoteDescription({ note: 'e', octave: 5, velocity: 127, duration: '1/16' });
+const f5 = createNoteDescription({ note: 'f', octave: 5, velocity: 127, duration: '1/16' });
 
-const Am = createMultiNoteStep([ a3, e4, c5 ]);
-const Dm = createMultiNoteStep([ a3, f4, d5 ]);
-const Em = createMultiNoteStep([ b3, g4, e5 ]);
-const Fd = createMultiNoteStep([ c4, a4, f5 ]);
-
-// TODO
-// - createPatterns, createPattern, createStep sind von außen verfügbar
-// - createNote und createController werden intern genutzt, um das
-//   menschenlesbare Format in ein maschinenlesbares umzuwandeln
-// - createStep gibt einen Step zurück, der *immer* aus einem Array von
-//   Noten- und Controller-Objekten besteht
-// - RestStep entfällt, das ist einfach ein Step mit leerem Array
-// - Damit entfallen (hoffentlich) alle switch-case-Statements
-// - Eine Fallunterscheidung werden wir weiterhin haben: Note vs Controller
-// - Crescendo-Funktion muss überarbeitet werden, so dass sie auf Noten und
-//   Controller-Werten arbeiten kann
-// - Patterns übersichtlicher strukturieren
-// - Sounds zu Beginn konfigurieren (Program Change)
-
-/*
-const bla = { note: 'c', octave: 5, velocity: 127, duration: '1/16' };
-
-const restStep = createStep([]);
-
-const x = createStep([
-  { note: 'c', octave: 5, velocity: 127, duration: '1/16' },
-  { note: 'c', octave: 5, velocity: 127, duration: '1/16' },
-  { controller: 73, value: 115 }
-]);
-*/
+const Am = createStep([ a3, e4, c5 ]);
+const Dm = createStep([ a3, f4, d5 ]);
+const Em = createStep([ b3, g4, e5 ]);
+const Fd = createStep([ c4, a4, f5 ]);
 
 const chords = createPatterns({
   a: [ Am, _, _, Am, _, _, Am, _, _, Am, _, _, Am, _, Am, _ ],

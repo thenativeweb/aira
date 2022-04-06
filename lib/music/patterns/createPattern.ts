@@ -1,4 +1,4 @@
-import { createRestStep } from './createRestStep';
+import { createStep } from './createStep';
 import { Pattern } from './Pattern';
 import { Step } from './Step';
 import * as errors from '../../errors';
@@ -25,7 +25,7 @@ const createPattern = function (steps: Step[]): Pattern {
     pattern.push(step);
 
     for (let i = 0; i < stepsToFillIn; i++) {
-      pattern.push(createRestStep());
+      pattern.push(createStep([]));
     }
   }
 
