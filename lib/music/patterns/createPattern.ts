@@ -25,7 +25,7 @@ const createPattern = function (steps: Step[]): Pattern {
     pattern.push(step);
 
     for (let i = 0; i < stepsToFillIn; i++) {
-      pattern.push(createStep([]));
+      pattern.push(createStep());
     }
   }
 

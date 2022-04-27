@@ -1,34 +1,20 @@
-import { Duration } from './Duration';
 import { getNoteValue } from '../../midi/getNoteValue';
-import { MidiValue } from '../../midi/MidiValue';
-import { Note } from './Note';
 import { NoteDescription } from './NoteDescription';
-import { Octave } from './Octave';
+import { NoteRecipe } from './NoteRecipe';
 
-type CreateNoteDescriptionOptions = {
-  note: Note;
-  octave: Octave;
-  velocity: MidiValue;
-  duration: Duration;
-} | {
-  noteValue: MidiValue;
-  velocity: MidiValue;
-  duration: Duration;
-};
-
-const createNoteDescription = function (options: CreateNoteDescriptionOptions): NoteDescription {
-  if ('noteValue' in options) {
+const createNoteDescription = function (noteRecipe: NoteRecipe): NoteDescription {
+  if ('noteValue' in noteRecipe) {
     return {
-      noteValue: options.noteValue,
-      velocity: options.velocity,
-      duration: options.duration
+      noteValue: noteRecipe.noteValue,
+      velocity: noteRecipe.velocity,
+      duration: noteRecipe.duration
     };
   }
 
   return {
-    noteValue: getNoteValue({ note: options.note, octave: options.octave }),
-    velocity: options.velocity,
-    duration: options.duration
+    noteValue: getNoteValue({ note: noteRecipe.note, octave: noteRecipe.octave }),
+    velocity: noteRecipe.velocity,
+    duration: noteRecipe.duration
   };
 };
 

@@ -1,10 +1,7 @@
 import { ControllerDescription } from './ControllerDescription';
-import { MidiValue } from '../../midi/MidiValue';
+import { ControllerRecipe } from './ControllerRecipe';
 
-const createControllerDescription = function ({ controller, value }: {
-  controller: MidiValue;
-  value: MidiValue;
-}): ControllerDescription {
+const createControllerDescription = function ({ controller, value }: ControllerRecipe): ControllerDescription {
   return { controller, value };
 };
 
