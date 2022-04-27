@@ -1,10 +1,5 @@
-import { ControllerRecipe } from '../elements/ControllerRecipe';
 import { ControllerStep } from './ControllerStep';
-import { createControllerDescription } from '../elements/createControllerDescription';
-import { createNoteDescription } from '../elements/createNoteDescription';
-import { NoteRecipe } from '../elements/NoteRecipe';
 import { NoteStep } from './NoteStep';
-import { NoteDescription } from '../elements/NoteDescription';
 
 class Step {
   public readonly notes: NoteStep[];
@@ -16,23 +11,21 @@ class Step {
     this.controllers = controllers;
   }
 
-  public withNote (noteRecipe: NoteRecipe): Step {
-    return this.withNotes([ noteRecipe ]);
+  public withNote (noteStep: NoteStep): Step {
+    return this.withNotes([ noteStep ]);
   }
 
-  public withNotes (noteRecipes: NoteRecipe[]): Step {
+  public withNotes (noteStep: NoteStep[]): Step {
     return new Step(
-      [ ...this.notes, ...noteRecipes.map(
-        (noteRecipe): NoteDescription => createNoteDescription(noteRecipe)
-      ) ],
+      [ ...this.notes, ...noteStep ],
       [ ...this.controllers ]
     );
   }
 
-  public withController (controllerRecipe: ControllerRecipe): Step {
+  public withController (controllerStep: ControllerStep): Step {
     return new Step(
       [ ...this.notes ],
-      [ ...this.controllers, createControllerDescription(controllerRecipe) ]
+      [ ...this.controllers, controllerStep ]
     );
   }
 }

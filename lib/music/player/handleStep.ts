@@ -1,4 +1,5 @@
 import { getMillisecondsFromDuration } from './getMillisecondsFromDuration';
+import { getNoteValue } from '../../midi/getNoteValue';
 import { Step } from '../patterns/Step';
 import { Track } from '../arrangement/Track';
 
@@ -13,7 +14,7 @@ const handleStep = function ({ step, track, bpm }: {
 
   for (const note of step.notes) {
     track.synthesizer.playNote({
-      noteValue: note.noteValue,
+      noteValue: getNoteValue(note),
       velocity: note.velocity,
       duration: getMillisecondsFromDuration({ duration: note.duration, bpm })
     });

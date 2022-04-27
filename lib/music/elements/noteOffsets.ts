@@ -1,7 +1,7 @@
-import { Note } from './Note';
+import { NoteName } from './NoteName';
 
 /* eslint-disable id-length, object-property-newline */
-const noteOffsets: Record<Note, number> = {
+const noteOffsets: Record<NoteName, number> = {
   c: 0, 'c#': 1,
   d: 2, 'd#': 3,
   e: 4,
