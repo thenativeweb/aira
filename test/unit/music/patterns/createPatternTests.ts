@@ -3,10 +3,24 @@ import { createPattern, maxStepsPerBar } from '../../../../lib/music/patterns/cr
 import * as errors from '../../../../lib/errors';
 
 suite('createPattern', (): void => {
-  test('throws an error if no steps are given.', async (): Promise<void> => {
-    assert.that((): void => {
-      createPattern([]);
-    }).is.throwing<errors.PatternLengthInvalid>((ex): boolean => ex.code === errors.PatternLengthInvalid.code);
+  test('returns an empty pattern if no array is given.', async (): Promise<void> => {
+    const pattern = createPattern();
+
+    assert.that(pattern.length).is.equalTo(96);
+    assert.that.eachElementOf(pattern).is.atLeast({
+      notes: [],
+      controllers: []
+    });
+  });
+
+  test('returns an empty pattern if an empty array is given.', async (): Promise<void> => {
+    const pattern = createPattern([]);
+
+    assert.that(pattern.length).is.equalTo(96);
+    assert.that.eachElementOf(pattern).is.atLeast({
+      notes: [],
+      controllers: []
+    });
   });
 
   test('throws an error if too many steps are given.', async (): Promise<void> => {
@@ -22,24 +36,4 @@ suite('createPattern', (): void => {
       createPattern(new Array(20).fill({ type: 'none' }));
     }).is.throwing<errors.PatternLengthInvalid>((ex): boolean => ex.code === errors.PatternLengthInvalid.code);
   });
-
-  // Test('returns a pattern with 96 steps.', async (): Promise<void> => {
-  //   const pattern = createPattern([
-  //     { type: 'beat' },
-  //     { type: 'beat' },
-  //     { type: 'beat' },
-  //     { type: 'beat' }
-  //   ]);
-
-  //   assert.that(pattern.length).is.equalTo(maxStepsPerBar);
-
-  //   assert.that(pattern[0]).is.equalTo({ type: 'beat' });
-  //   assert.that(pattern[24]).is.equalTo({ type: 'beat' });
-  //   assert.that(pattern[48]).is.equalTo({ type: 'beat' });
-  //   assert.that(pattern[72]).is.equalTo({ type: 'beat' });
-
-  //   const nonBeatSteps = pattern.filter((step): boolean => step.type === 'none');
-
-  //   assert.that(nonBeatSteps.length).is.equalTo(maxStepsPerBar - 4);
-  // });
 });

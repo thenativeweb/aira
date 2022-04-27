@@ -16,6 +16,6 @@ const player = createPlayer({
 
   process.on('SIGINT', async (): Promise<void> => {
     await stop();
-    process.exit();
+    process.exit(0);
   });
 })();

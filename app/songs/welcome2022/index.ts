@@ -1,5 +1,10 @@
-import { __, bd, bs, cc, cd, ch, sd } from './patterns';
-import { Score, Song } from '../../../lib/aira';
+import { bass as bs } from './bass';
+import { chords as cd } from './chords';
+import { bd, cc, ch, sd } from './drums';
+import { createPattern, Score, Song } from '../../../lib/aira';
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const _ = createPattern();
 
 const welcome2022: Song = {
   cover: {
@@ -22,17 +27,17 @@ const welcome2022: Song = {
 
       bars: [
         // Intro
-        [ bd.a, __,   ch.a, cc.c, bs.a, cd.a ],
-        [ bd.b, __,   ch.a, __,   bs.a, cd.a ],
-        [ bd.a, __,   ch.a, __,   bs.a, cd.a ],
-        [ bd.b, sd.c, ch.a, __,   bs.a, cd.a ],
+        [ bd.a, _,    ch.a, cc.c, bs.a, cd.Am ],
+        [ bd.b, _,    ch.a, _,    bs.a, cd.Am ],
+        [ bd.a, _,    ch.a, _,    bs.a, cd.Am ],
+        [ bd.b, sd.c, ch.a, _,    bs.a, cd.Am ],
 
         // Build-Up
-        [ bd.a, sd.a, ch.a, cc.c, bs.a, cd.a ],
-        [ bd.b, sd.b, ch.a, __,   bs.b, cd.b ],
-        [ bd.a, sd.a, ch.a, __,   bs.c, cd.c ],
-        [ bd.b, sd.c, ch.a, __,   bs.d, cd.d ],
-        [ bd.c, __,   __,   cc.c, __,   __   ]
+        [ bd.a, sd.a, ch.a, cc.c, bs.a, cd.Am ],
+        [ bd.b, sd.b, ch.a, _,    bs.b, cd.Dm ],
+        [ bd.a, sd.a, ch.a, _,    bs.c, cd.Em ],
+        [ bd.b, sd.c, ch.a, _,    bs.d, cd.Fd ],
+        [ bd.c, _,    _,    cc.c, _,    _    ]
       ]
     };
     /* eslint-enable key-spacing, no-multi-spaces */

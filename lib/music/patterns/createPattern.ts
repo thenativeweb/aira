@@ -5,9 +5,9 @@ import * as errors from '../../errors';
 
 const maxStepsPerBar = 96;
 
-const createPattern = function (steps: Step[]): Pattern {
+const createPattern = function (steps: Step[] = []): Pattern {
   if (steps.length === 0) {
-    throw new errors.PatternLengthInvalid();
+    steps.push(createStep());
   }
   if (steps.length > maxStepsPerBar) {
     throw new errors.PatternLengthInvalid();
