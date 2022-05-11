@@ -29,7 +29,8 @@ import { AnyNoteNameWithOctave } from './AnyNoteName';
  *   - a common midi-centric representation of the chord (in the note-values)
  *   - a simple way to generate NoteSteps for a chord (via getNoteSteps)
  *   - support for music-theory focussed workflow which
- *     * enables derivation of accurate note-names for contained notes (e.g. B𝄫 for the seventh of a Cdim7 chord)
+ *     enables derivation of accurate note-names for contained notes 
+ *     (e.g. B𝄫 for the seventh of a Cdim7 chord)
  */
 interface Chord {
   readonly root: Note;
@@ -39,9 +40,9 @@ interface Chord {
   hasEqualNotes(other: Chord): boolean;
   hasEqualNotesDisregardingOctave(other: Chord): boolean;
   getNoteSteps(
-    velocity: MidiValue | {[key: number]: MidiValue} | {[key in AnyNoteNameWithOctave]?: MidiValue}, 
-    duration: Duration  | {[key: number]: Duration} | {[key in AnyNoteNameWithOctave]?: Duration},
-    constructorFn: (note: Note, velocity?: MidiValue, duration?: Duration) => NoteStep
+    velocity?: MidiValue | {[key: number]: MidiValue} | {[key in AnyNoteNameWithOctave]?: MidiValue}, 
+    duration?: Duration  | {[key: number]: Duration} | {[key in AnyNoteNameWithOctave]?: Duration},
+    constructorFn?: (note: Note, velocity?: MidiValue, duration?: Duration) => NoteStep
   ): NoteStep[];
   clone(): Chord;
 }
