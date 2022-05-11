@@ -10,6 +10,12 @@ import { HttpSynthesizer } from './http/HttpSynthesizer';
 import { LocalSynthesizer } from './midi/LocalSynthesizer';
 import { MidiConnection } from './midi/MidiConnection';
 import { NoteStep } from './music/patterns/NoteStep';
+import { NoteStepMappable } from './music/patterns/mapToNoteStep';
+import { mapToNoteStep } from './music/patterns/mapToNoteStep';
+import { Chord } from './music/elements/Chord';
+import { GenericChord } from './music/elements/Chord';
+import { parseChord } from './music/elements/parseChord';
+import { createChord } from './music/elements/createChord';
 import { Score } from './music/arrangement/Score';
 import { Song } from './music/arrangement/Song';
 import { Step } from './music/patterns/Step';
@@ -29,6 +35,12 @@ export {
   LocalSynthesizer,
   MidiConnection,
   NoteStep,
+  NoteStepMappable,
+  mapToNoteStep,
+  Chord,
+  GenericChord,
+  parseChord,
+  createChord,
   Score,
   Song,
   Step,

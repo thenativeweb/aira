@@ -1,22 +1,27 @@
-import { createPatterns, createStep } from '../../../lib/aira';
+import { createPatterns, createStep, NoteStep, mapToNoteStep, NoteStepMappable } from '../../../lib/aira';
 
 /* eslint-disable id-length, @typescript-eslint/naming-convention */
 const _ = createStep();
 
-const a = createStep().withNote({ note: 'a1', velocity: 127, duration: '1/16' });
-const A = createStep().withNote({ note: 'a2', velocity: 127, duration: '1/16' });
-const d = createStep().withNote({ note: 'd1', velocity: 127, duration: '1/16' });
-const D = createStep().withNote({ note: 'd2', velocity: 127, duration: '1/16' });
-const e = createStep().withNote({ note: 'e1', velocity: 127, duration: '1/16' });
-const E = createStep().withNote({ note: 'e2', velocity: 127, duration: '1/16' });
-const f = createStep().withNote({ note: 'f1', velocity: 127, duration: '1/16' });
-const F = createStep().withNote({ note: 'f2', velocity: 127, duration: '1/16' });
+const noteStepData: NoteStepMappable[] =  [
+  { name: 'a', octave: 1, velocity: 127, duration: '1/16' },
+  { name: 'a', octave: 2, velocity: 127, duration: '1/16' },
+  { name: 'd', octave: 1, velocity: 127, duration: '1/16' },
+  { name: 'd', octave: 2, velocity: 127, duration: '1/16' },
+  { name: 'e', octave: 1, velocity: 127, duration: '1/16' },
+  { name: 'e', octave: 2, velocity: 127, duration: '1/16' },
+  { name: 'f', octave: 1, velocity: 127, duration: '1/16' },
+  { name: 'f', octave: 2, velocity: 127, duration: '1/16' },
+];
+
+const [a1, a2, d1, d2, e1, e2, f1, f1] = noteStepData.map(mapToNoteStep).map(createStep);
+
 
 const bass = createPatterns({
-  a: [ _, a, A, a, _, A, a, A, _, a, A, a, _, A, a, A ],
-  b: [ _, d, D, d, _, D, d, D, _, d, D, d, _, D, d, D ],
-  c: [ _, e, E, e, _, E, e, E, _, e, E, e, _, E, e, E ],
-  d: [ _, f, F, f, _, F, f, F, _, f, F, f, _, F, f, F ]
+  a: [ _, a1, a2, a1, _, a2, a1, a2, _, a1, a2, a1, _, a2, a1, a2 ],
+  b: [ _, d1, d2, d1, _, d2, d1, d2, _, d1, d2, d1, _, d2, d1, d2 ],
+  c: [ _, e1, e2, e1, _, e2, e1, e2, _, e1, e2, e1, _, e2, e1, e2 ],
+  d: [ _, f1, f2, f1, _, f2, f1, f2, _, f1, f2, f1, _, f2, f1, f2 ]
 });
 /* eslint-enable id-length, @typescript-eslint/naming-convention */
 

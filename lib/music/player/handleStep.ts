@@ -8,15 +8,15 @@ const handleStep = function ({ step, track, bpm }: {
   track: Track;
   bpm: number;
 }): void {
-  for (const controller of step.controllers) {
-    track.synthesizer.setController(controller);
+  for (const controllerStep of step.controllerSteps) {
+    track.synthesizer.setController(controllerStep);
   }
 
-  for (const note of step.notes) {
+  for (const noteStep of step.noteSteps) {
     track.synthesizer.playNote({
-      noteValue: getNoteValue(note),
-      velocity: note.velocity,
-      duration: getMillisecondsFromDuration({ duration: note.duration, bpm })
+      noteValue: getNoteValue(noteStep),
+      velocity: noteStep.velocity,
+      duration: getMillisecondsFromDuration({ duration: noteStep.duration, bpm })
     });
   }
 };

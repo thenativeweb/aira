@@ -8,8 +8,8 @@ suite('createPattern', (): void => {
 
     assert.that(pattern.length).is.equalTo(96);
     assert.that.eachElementOf(pattern).is.atLeast({
-      notes: [],
-      controllers: []
+      noteSteps: [],
+      controllerSteps: []
     });
   });
 
@@ -18,8 +18,8 @@ suite('createPattern', (): void => {
 
     assert.that(pattern.length).is.equalTo(96);
     assert.that.eachElementOf(pattern).is.atLeast({
-      notes: [],
-      controllers: []
+      noteSteps: [],
+      controllerSteps: []
     });
   });
 

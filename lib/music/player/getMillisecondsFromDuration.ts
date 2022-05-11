@@ -9,15 +9,10 @@ const getMillisecondsFromDuration = function ({ duration, bpm }: {
   const { numerator, denominator, modifier } =
     regex.exec(duration)!.groups!;
 
-  let milliseconds = (Number(numerator) / Number(denominator)) * 4 * (60_000 / bpm);
-
-  if (modifier === 'D') {
-    milliseconds *= 1.5;
-  } else if (modifier === 'T') {
-    milliseconds *= 2 / 3;
-  }
-
-  return Math.floor(milliseconds);
+  const milliseconds = (Number(numerator) / Number(denominator)) * 4 * (60_000 / bpm);
+  const dottedMultiplier  = ('D' === modifier) ? 1.5     : 1;
+  const tripletMultiplier = ('T' === modifier) ? (2 / 3) : 1;
+  return Math.floor(milliseconds * dottedMultiplier * tripletMultiplier);
 };
 
 export { getMillisecondsFromDuration };

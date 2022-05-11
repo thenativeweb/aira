@@ -2,30 +2,30 @@ import { ControllerStep } from './ControllerStep';
 import { NoteStep } from './NoteStep';
 
 class Step {
-  public readonly notes: NoteStep[];
+  public readonly noteSteps: NoteStep[];
 
-  public readonly controllers: ControllerStep[];
+  public readonly controllerSteps: ControllerStep[];
 
-  public constructor (notes: NoteStep[] = [], controllers: ControllerStep[] = []) {
-    this.notes = notes;
-    this.controllers = controllers;
+  public constructor (noteSteps: NoteStep[] = [], controllerSteps: ControllerStep[] = []) {
+    this.noteSteps = noteSteps;
+    this.controllerSteps = controllerSteps;
   }
 
   public withNote (noteStep: NoteStep): Step {
     return this.withNotes([ noteStep ]);
   }
 
-  public withNotes (noteStep: NoteStep[]): Step {
+  public withNotes (noteSteps: NoteStep[]): Step {
     return new Step(
-      [ ...this.notes, ...noteStep ],
-      [ ...this.controllers ]
+      [ ...this.noteSteps, ...noteSteps ],
+      [ ...this.controllerSteps ]
     );
   }
 
   public withController (controllerStep: ControllerStep): Step {
     return new Step(
-      [ ...this.notes ],
-      [ ...this.controllers, controllerStep ]
+      [ ...this.noteSteps ],
+      [ ...this.controllerSteps, controllerStep ]
     );
   }
 }

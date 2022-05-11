@@ -1,30 +1,41 @@
-import { createNoteStep, createPatterns, createStep } from '../../../lib/aira';
+import { createPatterns, createStep, NoteStep, Chord, parseChord, createChord } from '../../../lib/aira';
+import { mapValues } from 'lodash';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 const _ = createStep();
 
-const a3 = createNoteStep({ note: 'a3', velocity: 127, duration: '1/16' });
-const b3 = createNoteStep({ note: 'b3', velocity: 127, duration: '1/16' });
-const c4 = createNoteStep({ note: 'c4', velocity: 127, duration: '1/16' });
-const e4 = createNoteStep({ note: 'e4', velocity: 127, duration: '1/16' });
-const f4 = createNoteStep({ note: 'f4', velocity: 127, duration: '1/16' });
-const g4 = createNoteStep({ note: 'g4', velocity: 127, duration: '1/16' });
-const a4 = createNoteStep({ note: 'a4', velocity: 127, duration: '1/16' });
-const c5 = createNoteStep({ note: 'c5', velocity: 127, duration: '1/16' });
-const d5 = createNoteStep({ note: 'd5', velocity: 127, duration: '1/16' });
-const e5 = createNoteStep({ note: 'e5', velocity: 127, duration: '1/16' });
-const f5 = createNoteStep({ note: 'f5', velocity: 127, duration: '1/16' });
+type UsedChordNames = 'Amin' | 'Dmin' | 'Emin' | 'F';
 
-const Am = createStep().withNotes([ a3, e4, c5 ]);
-const Dm = createStep().withNotes([ a3, f4, d5 ]);
-const Em = createStep().withNotes([ b3, g4, e5 ]);
-const Fd = createStep().withNotes([ c4, a4, f5 ]);
+const chordNames: Record<UsedChordNames, string> = {
+  Amin: 'A_3min/E(drop-2)',
+  Dmin: 'D_4min/F(drop-2)',
+  Emin: 'E_4min/G(drop-2)',
+  F:    'F_4/A(drop-2)'
+};
+const chordInstances: Record<UsedChordNames, Chord> = mapValues(chordNames, parseChord);
+
+//Alternatively
+/*
+const chordInstances: Record<UsedChordNames, Chord> = {
+  Amin: createChord('A_3', {quality: 'min', inversion: 2, droppedPositions: [2]}),
+  Dmin: createChord('D_4', {quality: 'min', inversion: 1, droppedPositions: [2]}),
+  Emin: createChord('E_4', {quality: 'min', inversion: 1, droppedPositions: [2]}),
+  F:    createChord('F_4', {quality: 'Maj', inversion: 1, droppedPositions: [2]}),
+}
+*/
+
+const chordNoteStepArrays: Record<UsedChordNames, NoteStep[]> = mapValues(chordInstances, (x: Chord) => x.getNoteSteps(127, '1/16'));
+
+const Am = createStep(chordNoteStepArrays['Amin']);
+const Dm = createStep(chordNoteStepArrays['Dmin']);
+const Em = createStep(chordNoteStepArrays['Emin']);
+const F =  createStep(chordNoteStepArrays['F']);
 
 const chords = createPatterns({
   Am: [ Am, _, _, Am, _, _, Am, _, _, Am, _, _, Am, _, Am, _ ],
   Dm: [ Dm, _, _, Dm, _, _, Dm, _, _, Dm, _, _, Dm, _, Dm, _ ],
   Em: [ Em, _, _, Em, _, _, Em, _, _, Em, _, _, Em, _, Em, _ ],
-  Fd: [ Fd, _, _, Fd, _, _, Fd, _, _, Fd, _, _, Fd, _, Fd, _ ]
+  Fd: [ F , _, _, F , _, _, F , _, _, F , _, _, F , _, F , _ ]
 });
 /* eslint-enable @typescript-eslint/naming-convention */
 
