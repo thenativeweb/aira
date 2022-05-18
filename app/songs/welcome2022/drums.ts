@@ -1,19 +1,19 @@
 import {
-  mapToNoteStep,
   createPatterns,
   createStep,
   crescendo,
+  mapToNoteStep,
   tr8
 } from '../../../lib/aira';
 
 /* eslint-disable id-length, @typescript-eslint/naming-convention */
-const BD = createStep([mapToNoteStep({ note: tr8.bassDrum,    velocity: 127, duration: '1/16' })]);
-const bd = createStep([mapToNoteStep({ note: tr8.bassDrum,    velocity: 40,  duration: '1/16' })]);
-const SD = createStep([mapToNoteStep({ note: tr8.snareDrum,   velocity: 127, duration: '1/16' })]);
-const sd = createStep([mapToNoteStep({ note: tr8.snareDrum,   velocity: 80,  duration: '1/16' })]);
-const CH = createStep([mapToNoteStep({ note: tr8.closedHihat, velocity: 127, duration: '1/16' })]);
-const ch = createStep([mapToNoteStep({ note: tr8.closedHihat, velocity: 40,  duration: '1/16' })]);
-const CC = createStep([mapToNoteStep({ note: tr8.crashCymbal, velocity: 127, duration: '1/16' })]);
+const BD = createStep([ mapToNoteStep({ note: tr8.bassDrum, velocity: 127, duration: '1/16' }) ]);
+const bd = createStep([ mapToNoteStep({ note: tr8.bassDrum, velocity: 40, duration: '1/16' }) ]);
+const SD = createStep([ mapToNoteStep({ note: tr8.snareDrum, velocity: 127, duration: '1/16' }) ]);
+const sd = createStep([ mapToNoteStep({ note: tr8.snareDrum, velocity: 80, duration: '1/16' }) ]);
+const CH = createStep([ mapToNoteStep({ note: tr8.closedHihat, velocity: 127, duration: '1/16' }) ]);
+const ch = createStep([ mapToNoteStep({ note: tr8.closedHihat, velocity: 40, duration: '1/16' }) ]);
+const CC = createStep([ mapToNoteStep({ note: tr8.crashCymbal, velocity: 127, duration: '1/16' }) ]);
 const _ = createStep();
 
 const bassdrum = createPatterns({

@@ -1,4 +1,4 @@
-// value indicates the number of semitones the third is above the root
+// Value indicates the number of semitones the third is above the root
 enum ChordQuality {
   'Maj' = 4,
   'min' = 3,
@@ -8,7 +8,7 @@ enum ChordQuality {
   'sus' = 0,
   'Dom' = 4,
   'Power' = 0,
-} ;
+}
 
 type ChordScalePosition = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
@@ -16,7 +16,7 @@ type ChordExtension = 7 | 9 | 11 | 13;
 
 type ChordSuspension = '' | 2 | 4;
 
-type ChordAddition =  '♭2' | 'b2' | '2' | '4' | 4 | '♭6' | 'b6' | '6' | 6 | '♭7' | 'b7' | '7' | 7 | '♭9' | 'b9' | '9' | 9 | '♯9' | '#9' | '11' | 11 | '♯11' | '#11' | '♭13' | 'b13' | '13' | 13;
+type ChordAddition = '♭2' | 'b2' | '2' | '4' | 4 | '♭6' | 'b6' | '6' | 6 | '♭7' | 'b7' | '7' | 7 | '♭9' | 'b9' | '9' | 9 | '♯9' | '#9' | '11' | 11 | '♯11' | '#11' | '♭13' | 'b13' | '13' | 13;
 
 type ChordOmission = 1 | 5 | 7 | 9 | 11;
 
@@ -27,7 +27,7 @@ type ChordDroppedPosition = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 type ChordInversion = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
 class ChordConfiguration {
-  public constructor(
+  public constructor (
     public readonly quality: keyof typeof ChordQuality,
     public readonly extensions?: ChordExtension[],
     public readonly additions?: ChordAddition[],

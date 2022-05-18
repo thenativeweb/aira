@@ -1,16 +1,17 @@
-import { Note } from './Note';
-import { NoteMappable } from './mapToNote';
 import { ChordConfiguration } from './ChordConfiguration';
-import { mapToNote } from './mapToNote';
-import { Chord } from './Chord';
-import { GenericChord } from './Chord';
+import { Note } from './Note';
+import { Chord, GenericChord } from './Chord';
+import { mapToNote, NoteMappable } from './mapToNote';
 
 const createChord = (
-    root: Note | NoteMappable,
-    config: ChordConfiguration
-  ): Chord => {
-    const rootNote = root instanceof Note ? root : [root].map(mapToNote)[0] as Note;
-    return new GenericChord(rootNote, config);
+  root: NoteMappable,
+  config: ChordConfiguration
+): Chord => {
+  const rootNote = root instanceof Note ?
+    root :
+    mapToNote(root);
+
+  return new GenericChord(rootNote, config);
 };
 
 export { createChord };

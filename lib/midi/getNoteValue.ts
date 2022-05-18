@@ -7,8 +7,8 @@ const getNoteValue = (noteOrNoteStep: Note | NoteStep): MidiValue => {
   const noteRef = noteOrNoteStep instanceof NoteStep ? noteOrNoteStep.note : noteOrNoteStep;
   const base = (Number(noteRef.octave) + 1) * 12;
   const midiValue = base + noteRef.value;
-  return createMidiValue(midiValue);
-}
 
+  return createMidiValue(midiValue);
+};
 
 export { getNoteValue };

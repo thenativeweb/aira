@@ -1,4 +1,5 @@
 import { Bar } from './music/elements/Bar';
+import { createChord } from './music/elements/createChord';
 import { createNoteStep } from './music/patterns/createNoteStep';
 import { createPattern } from './music/patterns/createPattern';
 import { createPatterns } from './music/patterns/createPatterns';
@@ -10,16 +11,13 @@ import { HttpSynthesizer } from './http/HttpSynthesizer';
 import { LocalSynthesizer } from './midi/LocalSynthesizer';
 import { MidiConnection } from './midi/MidiConnection';
 import { NoteStep } from './music/patterns/NoteStep';
-import { NoteStepMappable } from './music/patterns/mapToNoteStep';
-import { mapToNoteStep } from './music/patterns/mapToNoteStep';
-import { Chord } from './music/elements/Chord';
-import { GenericChord } from './music/elements/Chord';
 import { parseChord } from './music/elements/parseChord';
-import { createChord } from './music/elements/createChord';
 import { Score } from './music/arrangement/Score';
 import { Song } from './music/arrangement/Song';
 import { Step } from './music/patterns/Step';
 import { Synthesizer } from './midi/Synthesizer';
+import { Chord, GenericChord } from './music/elements/Chord';
+import { mapToNoteStep, NoteStepMappable } from './music/patterns/mapToNoteStep';
 import { tb3, tr8 } from './music/instruments';
 
 export {

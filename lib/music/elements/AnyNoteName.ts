@@ -1,5 +1,5 @@
-import { NoteName } from "./NoteName";
 import { CommonNoteName } from './CommonNoteName';
+import { NoteName } from './NoteName';
 import { Octave } from './Octave';
 
 type AnyNoteName = NoteName | CommonNoteName;
