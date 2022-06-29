@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/thenativeweb/aira/compare/1.3.0...1.4.0) (2022-06-29)
+
+
+### Features
+
+* Support chords. ([852dc9e](https://github.com/thenativeweb/aira/commit/852dc9e572cbfabcb8ab7bd9c90d372c06288e7c))
+
 # [1.3.0](https://github.com/thenativeweb/aira/compare/1.2.1...1.3.0) (2022-03-15)
 
 
