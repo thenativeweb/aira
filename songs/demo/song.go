@@ -8,7 +8,10 @@ import (
 )
 
 func GetSong(tr8 synthesizer.TR8, tb3 synthesizer.TB3, system1 synthesizer.Generic) arrangement.Song {
+	__ := arrangement.NewPattern([]arrangement.Step{})
+
 	bd := GetBassDrum(tr8)
+	sd := GetSnareDrum(tr8)
 
 	return arrangement.NewSong(
 		arrangement.NewCover("Demo Song"),
@@ -25,7 +28,7 @@ func GetSong(tr8 synthesizer.TR8, tb3 synthesizer.TB3, system1 synthesizer.Gener
 			},
 			[]arrangement.Track{
 				arrangement.NewTrack("Bassdrum", tr8, false),
-				// arrangement.NewTrack("Snaredrum", tr8, false),
+				arrangement.NewTrack("Snaredrum", tr8, false),
 				// arrangement.NewTrack("Hi-Hat", tr8, false),
 				// arrangement.NewTrack("Crash Cymbal", tr8, false),
 				// arrangement.NewTrack("Bassline", tb3, false),
@@ -33,17 +36,17 @@ func GetSong(tr8 synthesizer.TR8, tb3 synthesizer.TB3, system1 synthesizer.Gener
 			},
 			[]arrangement.Bar{
 				// Introduction
-				arrangement.NewBar([]arrangement.Pattern{bd.A}),
-				arrangement.NewBar([]arrangement.Pattern{bd.B}),
-				arrangement.NewBar([]arrangement.Pattern{bd.A}),
-				arrangement.NewBar([]arrangement.Pattern{bd.B}),
+				arrangement.NewBar([]arrangement.Pattern{bd.A, __}),
+				arrangement.NewBar([]arrangement.Pattern{bd.B, __}),
+				arrangement.NewBar([]arrangement.Pattern{bd.A, __}),
+				arrangement.NewBar([]arrangement.Pattern{bd.B, sd.C}),
 
 				// Build-up
-				arrangement.NewBar([]arrangement.Pattern{bd.A}),
-				arrangement.NewBar([]arrangement.Pattern{bd.B}),
-				arrangement.NewBar([]arrangement.Pattern{bd.A}),
-				arrangement.NewBar([]arrangement.Pattern{bd.B}),
-				arrangement.NewBar([]arrangement.Pattern{bd.C}),
+				arrangement.NewBar([]arrangement.Pattern{bd.A, sd.A}),
+				arrangement.NewBar([]arrangement.Pattern{bd.B, sd.B}),
+				arrangement.NewBar([]arrangement.Pattern{bd.A, sd.A}),
+				arrangement.NewBar([]arrangement.Pattern{bd.B, sd.C}),
+				arrangement.NewBar([]arrangement.Pattern{bd.C, __}),
 			},
 		),
 	)

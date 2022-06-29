@@ -1,6 +1,7 @@
 package arrangement
 
 import (
+	"math"
 	"time"
 
 	"github.com/thenativeweb/aira/synthesizer"
@@ -47,6 +48,28 @@ func NewDuration(numerator int, denominator int, isDotted bool, isTriplet bool) 
 	}
 
 	return Duration{numerator, denominator, isDotted, isTriplet}
+}
+
+func (duration Duration) Milliseconds(song Song, factor float64) time.Duration {
+	durationNumerator := float64(duration.Numerator)
+	durationDenominator := float64(duration.Denominator)
+	signatureNumerator := float64(song.Score.Signature.Numerator)
+	minute := float64(time.Minute.Milliseconds())
+
+	milliseconds :=
+		durationNumerator / durationDenominator * signatureNumerator *
+			(minute / song.Score.BPM)
+
+	if duration.IsDotted {
+		milliseconds *= 1.5
+	}
+	if duration.IsTriplet {
+		milliseconds *= (2 / 3)
+	}
+
+	milliseconds *= factor
+
+	return time.Millisecond * time.Duration(math.Floor(milliseconds))
 }
 
 type NoteStep struct {

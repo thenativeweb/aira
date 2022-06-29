@@ -14,7 +14,7 @@ func Play(song arrangement.Song, context context.Context) {
 		track.Synthesizer.StopAllNotes()
 	}
 
-	<-time.After(song.Score.Initialize())
+	time.Sleep(song.Score.Initialize())
 
 	metronome := makeMetronome(song.Score.BPM, ppqn)
 	position := NewPosition()
@@ -63,8 +63,8 @@ func Play(song arrangement.Song, context context.Context) {
 							noteStep.Note,
 							noteStep.Velocity)
 
-						// TODO
-						<-time.After(100)
+						duration := noteStep.Duration.Milliseconds(song, 0.9)
+						time.Sleep(duration)
 
 						track.Synthesizer.StopNote(noteStep.Note)
 					}(track, noteStep)
