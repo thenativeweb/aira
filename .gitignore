@@ -1,9 +1,5 @@
-# Node.js folders
-node_modules/
-
-# Build artefacts
+# Build directories
 build/
 
-# OS generated files and folders
+# OS generated files and directories
 .DS_Store
-npm-debug.log
