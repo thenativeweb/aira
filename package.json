@@ -18,7 +18,7 @@
   "dependencies": {
     "@types/express": "4.17.13",
     "axios": "0.27.2",
-    "defekt": "9.2.0",
+    "defekt": "9.3.1",
     "easymidi": "2.1.0",
     "express": "4.18.1",
     "flaschenpost": "5.1.1",
