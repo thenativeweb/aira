@@ -5,24 +5,18 @@ on: pull_request
 jobs:
   qa:
     name: QA
-    runs-on: ${{ matrix.os }}
-
     strategy:
       matrix:
-        node-version: [ '18.x' ]
-        # Unlike usual, don't run this on Ubuntu, as ALSA is not installed by
-        # default.
-        os: [ macos-latest ]
+        os: [ macos-latest, ubuntu-latest, windows-latest ]
+    runs-on: ${{ matrix.os }}
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - name: Clone repository
+      uses: actions/checkout@v4
+    - name: Use Go
+      uses: actions/setup-go@v4
       with:
-        node-version: ${{ matrix.node-version }}
-    - name: Install dependencies
+        go-version-file: ./go.mod
+    - name: Run QA
       run: |
-        npm install
-    - name: Run roboter
-      run: |
-        npx roboter
+        make qa

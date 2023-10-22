@@ -8,27 +8,17 @@ on:
 jobs:
   release:
     name: Release
-    # Unlike usual, don't run this on Ubuntu, as ALSA is not installed by
-    # default.
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js
-      uses: actions/setup-node@v1
+    - name: Clone repository
+      uses: actions/checkout@v4
       with:
-        node-version: 18.x
-    - name: Install dependencies
+        fetch-depth: '0'
+    - name: Use Go
+      uses: actions/setup-go@v4
+      with:
+        go-version-file: ./go.mod
+    - name: Run QA
       run: |
-        npm install
-    - name: Run roboter
-      run: |
-        npx roboter
-    - name: Compile TypeScript
-      run: |
-        npx roboter build
-    - name: Release
-      env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN_ADMIN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN_ADMIN }}
-      run: npx semantic-release
+        make qa
